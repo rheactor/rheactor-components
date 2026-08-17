@@ -1,5 +1,4 @@
 import { range } from "@rheactor/rheactor-core";
-
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Mosaic } from "#/components/Surface/Mosaic/Mosaic";
@@ -8,7 +7,6 @@ export default {
   component: Mosaic,
 } satisfies Meta<typeof Mosaic>;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const Example: StoryObj<typeof Mosaic> = {
   args: {
     duration: 2500,

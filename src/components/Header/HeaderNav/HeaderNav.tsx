@@ -1,34 +1,26 @@
 "use client";
 
 import { twMerge } from "@rheactor/rheactor-core";
+import type { IconType } from "@rheactor/rheactor-font-awesome";
 import { faBars, faXmark } from "@rheactor/rheactor-font-awesome/classic-regular";
 import { Icon } from "@rheactor/rheactor-font-awesome/react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-
-import type { Resolve } from "#/services/PortalService";
-import type { IconType } from "@rheactor/rheactor-font-awesome";
 import type { PropsWithChildren, ReactElement, ReactNode } from "react";
 
 import { listenWindowEvent } from "#/services/EventService";
 import { useImmediateReference } from "#/services/hooks/useImmediateReference";
 import { useReady } from "#/services/hooks/useReady";
+import type { Resolve } from "#/services/PortalService";
 import { promisePortal } from "#/services/PortalService";
 
 interface Properties extends PropsWithChildren {
-  /**
-   * The class name of the nav element.
-   */
+  /** The class name of the nav element. */
   navClassName?: string;
 
-  /**
-   * The class name of the component.
-   */
+  /** The class name of the component. */
   listClassName?: string;
 
-  /**
-   * The children of the component.
-   * Typically a list of menu items.
-   */
+  /** The children of the component. Typically a list of menu items. */
   children?: ReactNode;
 
   /**
@@ -38,9 +30,7 @@ interface Properties extends PropsWithChildren {
    */
   icon?: IconType;
 
-  /**
-   * The class name of the icon element.
-   */
+  /** The class name of the icon element. */
   iconClassName?: string;
 
   /**
@@ -50,9 +40,7 @@ interface Properties extends PropsWithChildren {
    */
   closedIcon?: IconType;
 
-  /**
-   * The class name of the icon element when the menu is closed.
-   */
+  /** The class name of the icon element when the menu is closed. */
   closedIconClassName?: string;
 
   /**
@@ -88,18 +76,20 @@ export function HeaderNav({
         portalResolver.current?.();
         portalResolver.current = null;
       } else {
-        // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        void promisePortal<void>((resolver) => {
-          portalResolver.current = resolver;
+        void (async () => {
+          // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+          await promisePortal<void>((resolver) => {
+            portalResolver.current = resolver;
 
-          return (
-            <div className="contents" data-overlay>
-              {openedModalContent(resolver)}
-            </div>
-          );
-        }).then(() => {
+            return (
+              <div className="contents" data-overlay>
+                {openedModalContent(resolver)}
+              </div>
+            );
+          });
+
           setOpened(false);
-        });
+        })();
       }
 
       return !state;
@@ -150,12 +140,12 @@ export function HeaderNav({
         ref={navReference}
         data-forcing-overlay={opened || undefined}
         data-component="HeaderNav"
-        className={twMerge("overflow-hidden text-nowrap relative flex", navClassName)}
+        className={twMerge("relative flex overflow-hidden text-nowrap", navClassName)}
       >
         <ul
           className={twMerge(
-            "flex items-center justify-between gap-x-6 flex-nowrap transition",
-            isIconVisible && "opacity-0 pointer-events-none",
+            "flex flex-nowrap items-center justify-between gap-x-6 transition",
+            isIconVisible && "pointer-events-none opacity-0",
             listClassName,
           )}
         >
@@ -164,8 +154,8 @@ export function HeaderNav({
 
         <div
           className={twMerge(
-            "transition select-none absolute right-0 inset-y-0 flex items-center justify-center",
-            !isIconVisible && "opacity-0 pointer-events-none",
+            "absolute inset-y-0 right-0 flex items-center justify-center transition select-none",
+            !isIconVisible && "pointer-events-none opacity-0",
             iconClassName,
             opened && closedIconClassName,
           )}

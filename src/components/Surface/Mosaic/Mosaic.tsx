@@ -13,9 +13,8 @@ import {
   useRef,
   useState,
 } from "react";
-import { flushSync } from "react-dom";
-
 import type { CSSProperties, JSX, PropsWithChildren, ReactNode } from "react";
+import { flushSync } from "react-dom";
 
 import { Timer } from "#/services/classes/Timer";
 import { useImmediateReference } from "#/services/hooks/useImmediateReference";
@@ -36,23 +35,19 @@ interface Properties extends PropsWithChildren {
    */
   shuffle?: boolean;
 
-  /**
-   * The class name of the mosaic.
-   */
+  /** The class name of the mosaic. */
   className?: string;
 
-  /**
-   * The content of the mosaic.
-   */
+  /** The content of the mosaic. */
   children?: ReactNode;
 }
 
 enum AnimationState {
-  SETUP,
-  FADE_IN,
-  VISIBLE,
-  FADE_OUT,
-  INVISIBLE,
+  SETUP = "setup",
+  FADE_IN = "fadeIn",
+  VISIBLE = "visible",
+  FADE_OUT = "fadeOut",
+  INVISIBLE = "invisible",
 }
 
 export function Mosaic({ duration = 5000, shuffle = false, className, children }: Properties) {
@@ -61,10 +56,13 @@ export function Mosaic({ duration = 5000, shuffle = false, className, children }
   const [items, setItems] = useState<JSX.Element[]>([]);
   const [columns, setColumns] = useState(0);
 
+  const style = useMemo(() => ({ "--columns": columns }) as CSSProperties, [columns]);
+
   const [animationState, setAnimationState] = useState(AnimationState.SETUP);
   const animationStateReference = useImmediateReference(animationState);
 
   const allItems = useMemo(() => {
+    // oxlint-disable-next-line react/no-react-children
     const childrenItems = Children.toArray(children).filter((child) => isValidElement(child));
 
     return shuffle ? arrayShuffle(childrenItems) : childrenItems;
@@ -120,7 +118,6 @@ export function Mosaic({ duration = 5000, shuffle = false, className, children }
   );
 
   useLayoutEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setColumns(readColumns());
   }, [readColumns]);
 
@@ -180,10 +177,10 @@ export function Mosaic({ duration = 5000, shuffle = false, className, children }
           undefined
         }
         className={twMerge(
-          "transition starting:opacity-0 not-data-visible:opacity-0 grid grid-cols-[repeat(var(--columns),1fr)]!",
+          "grid grid-cols-[repeat(var(--columns),1fr)]! transition not-data-visible:opacity-0 starting:opacity-0",
           className,
         )}
-        style={{ "--columns": columns } as CSSProperties}
+        style={style}
         onMouseEnter={() => {
           if (animationState === AnimationState.VISIBLE) {
             timer.current?.stop();

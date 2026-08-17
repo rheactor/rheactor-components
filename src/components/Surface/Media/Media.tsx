@@ -2,20 +2,17 @@
 
 import { getExtension } from "@rheactor/rheactor-core";
 import getVideoId from "get-video-id";
-
 import type { ComponentProps } from "react";
 
-import { allowedExtensions as imageAllowedExtensions } from "#/components/Surface/Media/MediaImage";
 import { MediaImage } from "#/components/Surface/Media/MediaImage";
-import {
-  allowedExtensions as svgAllowedExtensions,
-  MediaSVG,
-} from "#/components/Surface/Media/MediaSVG";
-import {
-  allowedExtensions as videoLocalAllowedExtensions,
-  MediaVideoLocal,
-} from "#/components/Surface/Media/MediaVideoLocal";
+import { MediaSVG } from "#/components/Surface/Media/MediaSVG";
+import { MediaVideoLocal } from "#/components/Surface/Media/MediaVideoLocal";
 import { MediaVideoYoutube } from "#/components/Surface/Media/MediaVideoYoutube";
+import {
+  imageAllowedExtensions,
+  svgAllowedExtensions,
+  videoLocalAllowedExtensions,
+} from "#/supports/MediaSupport";
 
 type ImageProperties = Omit<ComponentProps<typeof MediaImage>, "src"> & {
   src: `${string}.${(typeof imageAllowedExtensions)[number]}` | (string & {});
@@ -57,7 +54,6 @@ function isExtension<ThenProperties extends Properties>(
 
 export function Media(properties: Properties) {
   if (isStaticImage(properties)) {
-    // eslint-disable-next-line react/destructuring-assignment
     return <Media {...properties} src={properties.src.src} />;
   }
 
@@ -73,7 +69,6 @@ export function Media(properties: Properties) {
     return <MediaVideoLocal {...properties} />;
   }
 
-  // eslint-disable-next-line react/destructuring-assignment
   const service = getVideoId(properties.src);
 
   if (service.service === "youtube") {

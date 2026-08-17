@@ -1,25 +1,19 @@
 "use client";
 
-import { clamp, noop } from "@rheactor/rheactor-core";
-import { twMerge } from "@rheactor/rheactor-core";
+import { clamp, noop, twMerge } from "@rheactor/rheactor-core";
 import { faAngleLeft, faAnglesLeft } from "@rheactor/rheactor-font-awesome/classic-regular";
 import { Icon } from "@rheactor/rheactor-font-awesome/react";
 import { useMemo } from "react";
-
 import type { ComponentProps } from "react";
 
 import { PaginationPage } from "#/components/Pagination/Pagination/PaginationPage";
 import { circularRange, paginate } from "#/services/ArrayService";
 
 interface Properties {
-  /**
-   * The current page.
-   */
+  /** The current page. */
   current: number;
 
-  /**
-   * The total number of pages.
-   */
+  /** The total number of pages. */
   total: number;
 
   /**
@@ -29,9 +23,7 @@ interface Properties {
    */
   visibleCount?: number;
 
-  /**
-   * The number of additional active elements after the current page (not inclusive).
-   */
+  /** The number of additional active elements after the current page (not inclusive). */
   spread?: number;
 
   /**
@@ -41,14 +33,10 @@ interface Properties {
    */
   queryString?: string;
 
-  /**
-   * The class name of the container element.
-   */
+  /** The class name of the container element. */
   className?: string;
 
-  /**
-   * The class name of each page element.
-   */
+  /** The class name of each page element. */
   pageClassName?: string;
 
   /**
@@ -72,9 +60,7 @@ interface Properties {
    */
   forceRender?: boolean;
 
-  /**
-   * The function to call when a page is clicked.
-   */
+  /** The function to call when a page is clicked. */
   onClick?(this: void, page: number): void;
 }
 
@@ -127,7 +113,7 @@ export function Pagination({
 
       {isVisible && previousNext && (
         <PaginationPage
-          page={Math.max(1, currentClamped - 1)}
+          page={clamp(currentClamped - 1, 1, total)}
           isDisabled={currentClamped === 1}
           {...pageProperties}
         >
@@ -150,7 +136,7 @@ export function Pagination({
 
       {isVisible && previousNext && (
         <PaginationPage
-          page={Math.min(total, currentClamped + 1)}
+          page={clamp(currentClamped + 1, 1, total)}
           isDisabled={currentClamped === total}
           {...pageProperties}
         >

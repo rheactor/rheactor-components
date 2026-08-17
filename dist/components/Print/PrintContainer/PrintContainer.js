@@ -1,1 +1,0 @@
-import{jsx as n}from"react/jsx-runtime";export function PrintContainer({children:t}){return n("div",{"data-component":"PrintContainer",className:"not-print:flex justify-center-safe items-center-safe not-print:min-h-screen not-print:bg-slate-200 not-print:p-8 not-print:w-fit not-print:min-w-full flex-col gap-y-8",children:t})}

@@ -1,1 +1,0 @@
-import{jsx as r}from"react/jsx-runtime";import{twMerge as a}from"@rheactor/rheactor-core";export function Container({paddingX:n=4,fluid:t=!1,className:o,children:e}){return r("div",{"data-component":"Container",className:a("w-full px-[--spacing(var(--padding-x))]",!t&&"mx-auto max-w-container",o),style:{"--padding-x":n},children:e})}

@@ -1,1 +1,0 @@
-import{jsx as r}from"react/jsx-runtime";import{twMerge as t}from"@rheactor/rheactor-core";import e from"next/image";export const allowedExtensions=["svg"];export function MediaSVG({src:o,alt:i,priority:a,className:n}){return r(e,{src:o,alt:i,width:0,height:0,priority:a,loading:"eager",unoptimized:!0,"data-component":"MediaSVG",className:t("w-full",n)})}

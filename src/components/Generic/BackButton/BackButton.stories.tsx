@@ -6,7 +6,6 @@ export default {
   component: BackButton,
 } satisfies Meta<typeof BackButton>;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const Example: StoryObj<typeof BackButton> = {
   args: {
     fallbackRoute: "https://google.com",

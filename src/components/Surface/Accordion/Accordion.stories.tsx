@@ -8,7 +8,6 @@ export default {
   component: Accordion,
 } satisfies Meta<typeof Accordion>;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 const PseudoChildren = (
   <div className="grid gap-y-4 overflow-hidden">
     <Animate effect="slideLeft">
@@ -31,7 +30,6 @@ const PseudoChildren = (
   </div>
 );
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const SimpleExample: StoryObj<typeof Accordion> = {
   args: {
     title: "Example",
@@ -39,7 +37,6 @@ export const SimpleExample: StoryObj<typeof Accordion> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const MultipleExample: StoryObj<typeof Accordion> = {
   render: (parameters) => (
     <div className="grid gap-y-4">
@@ -52,6 +49,7 @@ export const MultipleExample: StoryObj<typeof Accordion> = {
         {...parameters}
         className="group bg-blue-50"
         headerClassName="group-data-opened:text-red-600 bg-blue-50 text-blue-600 active:bg-blue-200"
+        // oxlint-disable-next-line react-perf/jsx-no-jsx-as-prop
         title={<em>Example</em>}
         titleClassName="group-data-opened:tracking-[0.25rem] transition-all"
         titleKind="h1"

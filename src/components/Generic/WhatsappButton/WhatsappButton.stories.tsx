@@ -6,14 +6,12 @@ export default {
   component: WhatsappButton,
 } satisfies Meta<typeof WhatsappButton>;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const Example: StoryObj<typeof WhatsappButton> = {
   args: {
     phone: "+55 99 99999-9999",
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const PrefixedExample: StoryObj<typeof WhatsappButton> = {
   args: {
     title: "Call Me",

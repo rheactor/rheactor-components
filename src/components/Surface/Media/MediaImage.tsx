@@ -2,54 +2,37 @@
 
 import { twMerge } from "@rheactor/rheactor-core";
 import { getNextImageUrl } from "@rheactor/rheactor-core/next";
-import { useEffect, useMemo, useRef, useState } from "react";
-
 import type { ImgProps } from "next/dist/shared/lib/get-img-props";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 
 import { listenResizeObserver } from "#/services/MutationService";
 
 interface Properties {
-  /**
-   * The source of the image.
-   */
+  /** The source of the image. */
   src: string;
 
-  /**
-   * The alt text of the image.
-   */
+  /** The alt text of the image. */
   alt: string;
 
-  /**
-   * The quality of the image.
-   */
+  /** The quality of the image. */
   quality?: number;
 
-  /**
-   * Determines if the image should be loaded as a priority.
-   */
+  /** Determines if the image should be loaded as a priority. */
   priority?: boolean;
 
-  /**
-   * Use unoptimized image mode.
-   */
+  /** Use unoptimized image mode. */
   unoptimized?: boolean;
 
-  /**
-   * The spot of the image.
-   */
+  /** The spot of the image. */
   spot?: {
     x: number;
     y: number;
   };
 
-  /**
-   * The class name of the image.
-   */
+  /** The class name of the image. */
   className?: string;
 }
-
-export const allowedExtensions = ["jpg", "jpeg", "png", "webp", "gif"] as const;
 
 const emptySource = "data:image/webp;base64,UklGRhYAAABXRUJQVlA4TAoAAAAvAAAAAEX/I/of";
 
@@ -64,6 +47,11 @@ export function MediaImage({
   const reference = useRef<HTMLImageElement>(null);
 
   const [width, setWidth] = useState(0);
+  const style = useMemo(
+    () => ({ "--spot": spot && `${spot.x}% ${spot.y}%` }) as CSSProperties,
+    [spot],
+  );
+
   const { src, srcSet, sizes } = useMemo(
     (): ImgProps =>
       width === 0
@@ -86,6 +74,7 @@ export function MediaImage({
   );
 
   return (
+    // oxlint-disable-next-line next/no-img-element
     <img
       ref={reference}
       src={src}
@@ -97,7 +86,7 @@ export function MediaImage({
       loading={priority ? "eager" : "lazy"}
       data-component="MediaImage"
       className={twMerge("w-full", spot !== undefined && "object-(--spot)", className)}
-      style={{ "--spot": spot && `${spot.x}% ${spot.y}%` } as CSSProperties}
+      style={style}
     />
   );
 }

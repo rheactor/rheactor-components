@@ -3,14 +3,11 @@
 import { twMerge } from "@rheactor/rheactor-core";
 import { faHandPointer } from "@rheactor/rheactor-font-awesome/classic-regular";
 import { Icon } from "@rheactor/rheactor-font-awesome/react";
-import { useState } from "react";
-
+import { useMemo, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 
 interface Properties {
-  /**
-   * The container class name.
-   */
+  /** The container class name. */
   className?: string;
 
   /**
@@ -27,26 +24,18 @@ interface Properties {
    */
   axis?: "horizontal" | "vertical";
 
-  /**
-   * The content of the front of the flip card.
-   */
+  /** The content of the front of the flip card. */
   contentFront: ReactNode;
 
-  /**
-   * The content of the back of the flip card.
-   */
+  /** The content of the back of the flip card. */
   contentBack: ReactNode;
 
   heightController?: "back" | "front";
 
-  /**
-   * The class name of the touch icon.
-   */
+  /** The class name of the touch icon. */
   touchIconClassName?: string;
 
-  /**
-   * The callback when the user flips the card.
-   */
+  /** The callback when the user flips the card. */
   onFlip?(this: void, viewpoint: "back" | "front"): void;
 }
 
@@ -65,19 +54,20 @@ export function FlipCard({
 }: Properties) {
   const [flip, setFlip] = useState(false);
 
+  const style = useMemo(
+    () => ({ "--flip-angle": flipTo === "left" ? "-180deg" : "180deg" }) as CSSProperties,
+    [flipTo],
+  );
+
   return (
     <div
       data-component="FlipCard"
       data-flipped={flip || undefined}
       className={twMerge(
-        "perspective-distant size-full group/flip-card overflow-hidden",
+        "group/flip-card size-full overflow-hidden perspective-distant",
         className,
       )}
-      style={
-        {
-          "--flip-angle": flipTo === "left" ? "-180deg" : "180deg",
-        } as CSSProperties
-      }
+      style={style}
       onClick={() => {
         onFlip?.("back");
         setFlip((state) => !state);
@@ -92,7 +82,7 @@ export function FlipCard({
     >
       <div
         className={twMerge(
-          "duration-800 relative h-full transition-transform transform-3d",
+          "relative h-full transition-transform duration-800 transform-3d",
           "not-max-mobile:group-hover/flip-card:transform-[rotateY(var(--flip-angle))]",
           axis === "vertical" &&
             "not-max-mobile:group-hover/flip-card:transform-[rotateX(var(--flip-angle))]",
@@ -122,7 +112,7 @@ export function FlipCard({
 
       <div
         className={twMerge(
-          "text-theme-800 not-pointer-coarse:hidden bg-theme-200/75 absolute bottom-1 right-1 rounded-full p-1 transition group-active:scale-90 pointer-events-none",
+          "text-theme-800 bg-theme-200/75 pointer-events-none absolute right-1 bottom-1 rounded-full p-1 transition not-pointer-coarse:hidden group-active:scale-90",
           touchIconClassName,
         )}
       >

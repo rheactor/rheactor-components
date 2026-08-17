@@ -1,1 +1,0 @@
-import{range as r}from"@rheactor/rheactor-core";export function circularRange(r,t,e,o){let n=t-r+1,a=(((e-r)%n+n)%n+1)%n;return Array.from({length:o},(t,e)=>r+(a+e)%n)}export function paginate(t,e,o){if(void 0===o||e<=o)return r(1,e);let n=t-Math.floor(o/2),a=n+o-1;return n<1&&(n=1,a=o),a>e&&(a=e,n=e-o+1),r(n,a)}

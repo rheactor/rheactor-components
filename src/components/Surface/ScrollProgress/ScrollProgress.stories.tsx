@@ -6,7 +6,6 @@ export default {
   component: ScrollProgress,
 } satisfies Meta<typeof ScrollProgress>;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const ExampleInside: StoryObj<typeof ScrollProgress> = {
   render(parameters) {
     return (
@@ -24,7 +23,6 @@ export const ExampleInside: StoryObj<typeof ScrollProgress> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const ExampleMiddle: StoryObj<typeof ScrollProgress> = {
   render(parameters) {
     return (
@@ -42,7 +40,6 @@ export const ExampleMiddle: StoryObj<typeof ScrollProgress> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const ExampleOutside: StoryObj<typeof ScrollProgress> = {
   render(parameters) {
     return (

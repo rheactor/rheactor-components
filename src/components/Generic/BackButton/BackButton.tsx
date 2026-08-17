@@ -15,14 +15,10 @@ interface Properties {
    */
   title?: string;
 
-  /**
-   * The route to go back to when location.back() is not the current site.
-   */
+  /** The route to go back to when location.back() is not the current site. */
   fallbackRoute?: string;
 
-  /**
-   * The class name of the button.
-   */
+  /** The class name of the button. */
   className?: string;
 }
 
@@ -35,7 +31,6 @@ export function BackButton({ title = "Back", fallbackRoute, className }: Propert
     if (hasFallbackRoute && history.length > 1) {
       try {
         if (new URL(document.referrer).host === location.host) {
-          // eslint-disable-next-line react-hooks/set-state-in-effect
           setUseFallback(false);
         }
       } catch {

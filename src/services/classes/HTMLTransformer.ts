@@ -1,10 +1,9 @@
 import DomHandler, { Element, Text } from "domhandler";
+import type { ChildNode } from "domhandler";
 import { Parser } from "htmlparser2";
 import { createElement, Fragment } from "react";
-import styleProps from "style-to-js";
-
-import type { ChildNode } from "domhandler";
 import type { ComponentProps, ElementType, ReactNode } from "react";
+import styleProps from "style-to-js";
 
 type TextReplacerCallback = (text: string) => ReactNode;
 

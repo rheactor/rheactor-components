@@ -1,7 +1,6 @@
 "use client";
 
 import { createContext, useEffect, useMemo, useState } from "react";
-
 import type { PropsWithChildren } from "react";
 
 import { listenWindowEvent } from "#/services/EventService";
@@ -11,7 +10,7 @@ interface ContextProperties {
   domain?: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
+// oxlint-disable-next-line react/only-export-components
 export const ResourceContext = createContext<ContextProperties>({});
 
 export function ResourceProvider({ children }: PropsWithChildren) {
@@ -29,7 +28,7 @@ export function ResourceProvider({ children }: PropsWithChildren) {
   );
 
   useEffect(() => {
-    const url = new URL(window.location.href);
+    const url = new URL(globalThis.location.href);
     const urlDomain = url.searchParams.get("cms.domain");
 
     if (urlDomain !== null) {

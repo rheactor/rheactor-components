@@ -1,5 +1,5 @@
 export function appendQueryString(key: string, value: string) {
-  const url = new URL(window.location.href);
+  const url = new URL(globalThis.location.href);
 
   url.searchParams.set(key, value);
 
@@ -19,5 +19,5 @@ export function generateQueryString(parameters: Record<string, string | undefine
 }
 
 export function getSimplifiedUrl() {
-  return window.location.origin + window.location.pathname;
+  return globalThis.location.origin + globalThis.location.pathname;
 }

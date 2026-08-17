@@ -1,1 +1,0 @@
-import{jsx as r}from"react/jsx-runtime";import{twMerge as e}from"@rheactor/rheactor-core";import{Container as t}from"../../Primitive/Container/Container.js";export function HeaderContainer({className:o,...a}){return r(t,{className:e("flex justify-between gap-x-4",o),...a,"data-component":"HeaderContainer"})}

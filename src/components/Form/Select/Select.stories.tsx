@@ -6,7 +6,6 @@ export default {
   component: Select,
 } satisfies Meta<typeof Select>;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const Example: StoryObj<typeof Select> = {
   args: {
     placeholder: "Example Placeholder",
@@ -24,7 +23,6 @@ export const Example: StoryObj<typeof Select> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const Grouped: StoryObj<typeof Select> = {
   args: {
     placeholder: "Example Placeholder",

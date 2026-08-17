@@ -1,1 +1,0 @@
-import{jsx as e}from"react/jsx-runtime";import{twMerge as r}from"@rheactor/rheactor-core";export function TextClamp({lines:t,children:a,className:o}){return e("div",{"data-component":"TextClamp",className:r("line-clamp-(--lines)",o),style:{"--lines":t},children:a})}

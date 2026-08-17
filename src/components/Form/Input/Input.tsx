@@ -2,7 +2,6 @@
 
 import { twMerge } from "@rheactor/rheactor-core";
 import { useContext } from "react";
-
 import type { ComponentProps } from "react";
 
 import { inputClassName } from "#/components/fixtures";
@@ -20,9 +19,7 @@ type InputRange = "range";
 type InputText = "email" | "password" | "search" | "tel" | "text" | "url";
 
 interface InputTextProperties extends ComponentProps<"input"> {
-  /**
-   * Input type.
-   */
+  /** Input type. */
   type?:
     | InputCheckbox
     | InputColor

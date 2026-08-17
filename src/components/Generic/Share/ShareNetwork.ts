@@ -1,3 +1,4 @@
+import type { IconType } from "@rheactor/rheactor-font-awesome";
 import {
   faFacebookF,
   faLinkedinIn,
@@ -5,8 +6,6 @@ import {
   faXTwitter,
 } from "@rheactor/rheactor-font-awesome/brands";
 import { faShareNodes } from "@rheactor/rheactor-font-awesome/classic-regular";
-
-import type { IconType } from "@rheactor/rheactor-font-awesome";
 
 import { generateQueryString } from "#/services/UrlService";
 

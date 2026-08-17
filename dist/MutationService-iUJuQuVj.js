@@ -1,0 +1,1 @@
+function e(e,t,n,r=!0){let i=new MutationObserver(n);return r&&n([],i),e instanceof Element&&i.observe(e,t),()=>{e instanceof Element&&i.disconnect()}}function t(e,t,n,r=!0){let i=new ResizeObserver(n);return r&&n([],i),e instanceof Element&&i.observe(e,t),()=>{e instanceof Element&&i.disconnect()}}export{t as n,e as t};

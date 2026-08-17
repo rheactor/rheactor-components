@@ -1,11 +1,9 @@
 import { twMerge } from "@rheactor/rheactor-core";
-
+import { useMemo } from "react";
 import type { CSSProperties, PropsWithChildren, ReactNode } from "react";
 
 interface Properties extends PropsWithChildren {
-  /**
-   * Container id to be used as anchor.
-   */
+  /** Container id to be used as anchor. */
   id?: string;
 
   /**
@@ -29,14 +27,10 @@ interface Properties extends PropsWithChildren {
    */
   marginBottom?: number;
 
-  /**
-   * Container class name.
-   */
+  /** Container class name. */
   className?: string;
 
-  /**
-   * Container children.
-   */
+  /** Container children. */
   children?: ReactNode;
 }
 
@@ -48,21 +42,25 @@ export function Section({
   className,
   children,
 }: Properties) {
+  const style = useMemo(
+    () =>
+      ({
+        "--margin-top": marginTop,
+        "--margin-bottom": marginBottom,
+      }) as CSSProperties,
+    [marginTop, marginBottom],
+  );
+
   return (
     <section
       id={id}
       data-component="Section"
       className={twMerge(
-        "mt-[--spacing(var(--margin-top))] max-mobile:mt-[--spacing(var(--margin-top)/2)]",
-        "mb-[--spacing(var(--margin-bottom))] max-mobile:mb-[--spacing(var(--margin-bottom)/2)]",
+        "max-mobile:mt-[--spacing(var(--margin-top)/2)] mt-[--spacing(var(--margin-top))]",
+        "max-mobile:mb-[--spacing(var(--margin-bottom)/2)] mb-[--spacing(var(--margin-bottom))]",
         className,
       )}
-      style={
-        {
-          "--margin-top": marginTop,
-          "--margin-bottom": marginBottom,
-        } as CSSProperties
-      }
+      style={style}
     >
       {children}
     </section>

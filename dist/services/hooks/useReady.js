@@ -1,1 +1,1 @@
-"use client";import{useEffect as e,useState as t}from"react";export function useReady(){let[r,n]=t(!1);return e(()=>{n(!0)},[]),r}
+"use client";import{useEffect as e,useState as t}from"react";function n(){let[n,r]=t(!1);return e(()=>{r(!0)},[]),n}export{n as useReady};

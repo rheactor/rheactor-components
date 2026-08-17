@@ -1,34 +1,24 @@
 "use client";
 
-import { clamp } from "@rheactor/rheactor-core";
-import { twMerge } from "@rheactor/rheactor-core";
+import { clamp, twMerge } from "@rheactor/rheactor-core";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { createPortal } from "react-dom";
-
 import type { CSSProperties, PropsWithChildren } from "react";
+import { createPortal } from "react-dom";
 
 import { listenWindowScroll } from "#/services/EventService";
 import { useReady } from "#/services/hooks/useReady";
 
 interface Properties extends PropsWithChildren {
-  /**
-   * The className of the container.
-   */
+  /** The className of the container. */
   className?: string;
 
-  /**
-   * The className of the progress bar.
-   */
+  /** The className of the progress bar. */
   progressClassName?: string;
 
-  /**
-   * The callback when the progress is updated.
-   */
+  /** The callback when the progress is updated. */
   onProgress?(this: void, progress: number): void;
 
-  /**
-   * The callback when the progress is completed.
-   */
+  /** The callback when the progress is completed. */
   onCompleted?(this: void): void;
 }
 
@@ -71,15 +61,20 @@ export function ScrollProgress({
     });
   }, [isReady, onCompleted, onProgress]);
 
+  const progressStyle = useMemo(
+    () => ({ "--progress": `${progress * 100}%` }) as CSSProperties,
+    [progress],
+  );
+
   const scrollProgress = useMemo(
     () => (
       <div
         data-component="ScrollProgressBar"
-        className={twMerge("fixed top-0 left-0 h-1 w-(--progress) bg-theme-400", progressClassName)}
-        style={{ "--progress": `${progress * 100}%` } as CSSProperties}
+        className={twMerge("bg-theme-400 fixed top-0 left-0 h-1 w-(--progress)", progressClassName)}
+        style={progressStyle}
       />
     ),
-    [progress, progressClassName],
+    [progressClassName, progressStyle],
   );
 
   return (

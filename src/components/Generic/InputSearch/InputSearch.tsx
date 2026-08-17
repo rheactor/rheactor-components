@@ -1,18 +1,13 @@
 import { twMerge } from "@rheactor/rheactor-core";
 import { faMagnifyingGlass } from "@rheactor/rheactor-font-awesome/classic-regular";
 import { Icon } from "@rheactor/rheactor-font-awesome/react";
-
 import type { FormHTMLAttributes, ReactNode } from "react";
 
 interface Properties {
-  /**
-   * The class name that will be appended to the container element.
-   */
+  /** The class name that will be appended to the container element. */
   className?: string;
 
-  /**
-   * The URL that the form data will be submitted to.
-   */
+  /** The URL that the form data will be submitted to. */
   formAction?: FormHTMLAttributes<HTMLFormElement>["action"];
 
   /**
@@ -22,39 +17,25 @@ interface Properties {
    */
   formMethod?: FormHTMLAttributes<HTMLFormElement>["method"];
 
-  /**
-   * The class name that will be appended to the search icon.
-   */
+  /** The class name that will be appended to the search icon. */
   iconClassName?: string;
 
-  /**
-   * The name of the search input.
-   */
+  /** The name of the search input. */
   inputName?: string;
 
-  /**
-   * The default value of the search input.
-   */
+  /** The default value of the search input. */
   inputDefaultValue?: string;
 
-  /**
-   * The class name that will be appended to the search input.
-   */
+  /** The class name that will be appended to the search input. */
   inputClassName?: string;
 
-  /**
-   * The placeholder text of the search input.
-   */
+  /** The placeholder text of the search input. */
   inputPlaceholder?: string;
 
-  /**
-   * The class name that will be appended to the search button.
-   */
+  /** The class name that will be appended to the search button. */
   buttonClassName?: string;
 
-  /**
-   * The text of the search button.
-   */
+  /** The text of the search button. */
   buttonText?: ReactNode;
 }
 
@@ -77,7 +58,7 @@ export function InputSearch({
       suppressHydrationWarning
       data-component="InputSearch"
       className={twMerge(
-        "border-theme-100 has-focus:border-theme-300 group relative flex rounded border transition bg-white",
+        "border-theme-100 has-focus:border-theme-300 group relative flex rounded border bg-white transition",
         className,
       )}
     >
@@ -95,7 +76,7 @@ export function InputSearch({
         name={inputName}
         defaultValue={inputDefaultValue}
         suppressHydrationWarning
-        className={twMerge("w-full pl-9 focus:outline-none py-1.5", inputClassName)}
+        className={twMerge("w-full py-1.5 pl-9 focus:outline-none", inputClassName)}
         placeholder={inputPlaceholder}
       />
 

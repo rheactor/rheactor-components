@@ -2,41 +2,32 @@ import { twMerge } from "@rheactor/rheactor-core";
 import { faChevronDown } from "@rheactor/rheactor-font-awesome/classic-regular";
 import { Icon } from "@rheactor/rheactor-font-awesome/react";
 import { Fragment } from "react";
-
 import type { ComponentProps } from "react";
 
 import { inputClassName } from "#/components/fixtures";
 import { SelectOption } from "#/components/Form/Select/SelectOption";
 
 interface Properties extends ComponentProps<"select"> {
-  /**
-   * The placeholder of the select.
-   */
+  /** The placeholder of the select. */
   placeholder?: string;
 
   /**
    * The options of the select.
    *
-   * A `null` entry forces an empty separator (`<optgroup>`) between the
-   * surrounding options, even when the adjacent groups are the same.
+   * A `null` entry forces an empty separator (`<optgroup>`) between the surrounding options, even
+   * when the adjacent groups are the same.
    */
   options: Array<OptionItem | null>;
 
-  /**
-   * The className of the option.
-   */
+  /** The className of the option. */
   className?: string;
 
-  /**
-   * The className of the arrow.
-   */
+  /** The className of the arrow. */
   arrowClassName?: string;
 }
 
 interface OptionItem {
-  /**
-   * The title of the option.
-   */
+  /** The title of the option. */
   title?: string;
 
   /**
@@ -46,16 +37,13 @@ interface OptionItem {
    */
   value?: string;
 
-  /**
-   * The className of the option.
-   */
+  /** The className of the option. */
   className?: string;
 
   /**
-   * The group this option belongs to. Options sharing the same group are
-   * rendered together inside a single `<optgroup>`, respecting the order of
-   * their first appearance. When omitted, the option is rendered at the root
-   * of the `<select>`.
+   * The group this option belongs to. Options sharing the same group are rendered together inside a
+   * single `<optgroup>`, respecting the order of their first appearance. When omitted, the option
+   * is rendered at the root of the `<select>`.
    */
   group?: string;
 }
@@ -84,7 +72,6 @@ export function Select({
 
     const group = option.group ?? null;
 
-    // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
     if (current === null || current.group !== group) {
       current = { group, options: [] };
       blocks.push(current);
@@ -105,6 +92,7 @@ export function Select({
               {placeholder}
             </option>
 
+            {/* oxlint-disable-next-line jsx-a11y/control-has-associated-label */}
             <option disabled value="-" />
           </>
         )}
@@ -143,7 +131,7 @@ export function Select({
 
       <div
         className={twMerge(
-          "text-theme-500 pointer-events-none absolute right-4 top-1/2 -translate-y-1/2",
+          "text-theme-500 pointer-events-none absolute top-1/2 right-4 -translate-y-1/2",
           arrowClassName,
         )}
       >

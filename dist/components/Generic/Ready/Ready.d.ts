@@ -1,2 +1,5 @@
-import type { PropsWithChildren, ReactNode } from "react";
-export declare function Ready({ children }: PropsWithChildren): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>> | Iterable<ReactNode> | (string | number | bigint | boolean | import("react").ReactPortal | import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined);
+import { PropsWithChildren, ReactNode } from "react";
+//#region src/components/Generic/Ready/Ready.d.ts
+declare function Ready({ children }: PropsWithChildren): Iterable<ReactNode> | import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>> | (string | number | bigint | boolean | Iterable<ReactNode> | import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>> | import("react").ReactPortal | null | undefined);
+//#endregion
+export { Ready };

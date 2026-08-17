@@ -1,7 +1,6 @@
 import { twMerge } from "@rheactor/rheactor-core";
-import { Icon } from "@rheactor/rheactor-font-awesome/react";
-
 import type { IconType } from "@rheactor/rheactor-font-awesome";
+import { Icon } from "@rheactor/rheactor-font-awesome/react";
 
 export type ArrowAdvance = "batch" | "sequential";
 
@@ -24,7 +23,7 @@ export function SliderArrow({
   rotate = false,
   placement,
   isDisabled,
-  onClick,
+  onClick: handleClick,
 }: Properties) {
   return (
     <div
@@ -32,22 +31,22 @@ export function SliderArrow({
       data-component="SliderArrow"
       data-disabled={isDisabled === true ? true : undefined}
       className={twMerge(
-        "flex items-center -translate-x-full transition starting:opacity-0 transform-3d",
+        "flex -translate-x-full items-center transition transform-3d starting:opacity-0",
         "data-disabled:pointer-events-none data-disabled:opacity-25",
         rotate ? "right-0 translate-x-full" : "left-0",
-        placement === "external" ? "h-full w-fit absolute z-10" : "translate-x-0",
+        placement === "external" ? "absolute z-10 h-full w-fit" : "translate-x-0",
         (placement === "overlay" || placement === "disabled") &&
-          "absolute z-10 h-fit top-1/2 -translate-y-1/2",
+          "absolute top-1/2 z-10 h-fit -translate-y-1/2",
         placement === "disabled" && "opacity-0 data-disabled:opacity-0",
       )}
     >
       <div
         className={twMerge(
-          "bg-theme-400 hover:bg-theme-500 cursor-pointer rounded-full p-2 transition active:brightness-90 text-white",
+          "bg-theme-400 hover:bg-theme-500 cursor-pointer rounded-full p-2 text-white transition active:brightness-90",
           rotate && "rotate-y-180",
           className,
         )}
-        onClick={onClick}
+        onClick={handleClick}
       >
         <Icon type={icon} />
       </div>

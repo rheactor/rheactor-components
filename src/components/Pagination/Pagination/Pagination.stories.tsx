@@ -1,6 +1,5 @@
-import { expect, fn, userEvent, waitFor, within } from "storybook/test";
-
 import type { Meta, StoryObj } from "@storybook/react";
+import { expect, fn, userEvent, waitFor, within } from "storybook/test";
 
 import { Pagination } from "#/components/Pagination/Pagination/Pagination";
 
@@ -8,7 +7,6 @@ export default {
   component: Pagination,
 } satisfies Meta<typeof Pagination>;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const Example: StoryObj<typeof Pagination> = {
   args: {
     current: 3,
@@ -17,7 +15,6 @@ export const Example: StoryObj<typeof Pagination> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const NoFirstLastExample: StoryObj<typeof Pagination> = {
   args: {
     current: 8,
@@ -28,7 +25,6 @@ export const NoFirstLastExample: StoryObj<typeof Pagination> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const SpreadExample: StoryObj<typeof Pagination> = {
   args: {
     current: 8,
@@ -38,7 +34,6 @@ export const SpreadExample: StoryObj<typeof Pagination> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const SpreadCyclicExample: StoryObj<typeof Pagination> = {
   args: {
     current: 9,
@@ -47,7 +42,6 @@ export const SpreadCyclicExample: StoryObj<typeof Pagination> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const ForceRenderExample: StoryObj<typeof Pagination> = {
   args: {
     current: 1,
@@ -56,7 +50,6 @@ export const ForceRenderExample: StoryObj<typeof Pagination> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const ArrowsExample: StoryObj<typeof Pagination> = {
   args: {
     current: 1,
@@ -65,7 +58,6 @@ export const ArrowsExample: StoryObj<typeof Pagination> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const CustomizeExample: StoryObj<typeof Pagination> = {
   args: {
     current: 1,
@@ -76,7 +68,6 @@ export const CustomizeExample: StoryObj<typeof Pagination> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const QueryStringExample: StoryObj<typeof Pagination> = {
   args: {
     current: 1,
@@ -86,7 +77,6 @@ export const QueryStringExample: StoryObj<typeof Pagination> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const ClickExample: StoryObj<typeof Pagination> = {
   play: async ({ args, canvasElement }) => {
     const canvas = within(canvasElement);
@@ -101,6 +91,8 @@ export const ClickExample: StoryObj<typeof Pagination> = {
     current: 1,
     total: 10,
     visibleCount: 3,
-    onClick: fn(),
+    onClick: () => {
+      fn();
+    },
   },
 };

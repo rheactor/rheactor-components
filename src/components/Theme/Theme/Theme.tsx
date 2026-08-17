@@ -1,16 +1,13 @@
 import { twMerge } from "@rheactor/rheactor-core";
-
 import type { PropsWithChildren, ReactNode } from "react";
 
+import { variants } from "#/supports/ThemeSupport";
+
 interface Properties extends PropsWithChildren {
-  /**
-   * The variant of the theme.
-   */
+  /** The variant of the theme. */
   variant: Variant | (string & {});
 
-  /**
-   * The content.
-   */
+  /** The content. */
   children: ReactNode;
 }
 
@@ -41,47 +38,11 @@ export type Variant =
 
 type VariantSemantic = "danger" | "debug" | "error" | "info" | "success" | "warning";
 
-export const variants = {
-  // Colors.
-  amber: "theme-amber",
-  blue: "theme-blue",
-  cyan: "theme-cyan",
-  emerald: "theme-emerald",
-  fuchsia: "theme-fuchsia",
-  gray: "theme-gray",
-  green: "theme-green",
-  indigo: "theme-indigo",
-  lime: "theme-lime",
-  neutral: "theme-neutral",
-  orange: "theme-orange",
-  pink: "theme-pink",
-  purple: "theme-purple",
-  red: "theme-red",
-  rose: "theme-rose",
-  sky: "theme-sky",
-  slate: "theme-slate",
-  stone: "theme-stone",
-  teal: "theme-teal",
-  violet: "theme-violet",
-  yellow: "theme-yellow",
-  zinc: "theme-zinc",
-
-  // Semantics.
-  danger: "theme-red",
-  error: "theme-red",
-  info: "theme-blue",
-  success: "theme-green",
-  debug: "theme-purple",
-  warning: "theme-orange",
-} as Readonly<Record<Variant, `theme-${string}`>>;
-
 function isBuildInVariant(variant: string): variant is Variant {
   return Object.hasOwn(variants, variant);
 }
 
-/**
- * A utility component to change the color of any element based on a variant as theme.
- */
+/** A utility component to change the color of any element based on a variant as theme. */
 export function Theme({ variant, children }: Properties) {
   return (
     <div

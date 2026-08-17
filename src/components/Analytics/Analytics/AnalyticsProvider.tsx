@@ -1,16 +1,10 @@
 "use client";
 
 import { GoogleAnalytics, sendGAEvent } from "@next/third-parties/google";
-import { createContext, useCallback, useMemo } from "react";
-
+import { useCallback, useMemo } from "react";
 import type { PropsWithChildren } from "react";
 
-interface ContextProperties {
-  sendEvent?(this: void, name: string, parameters?: Record<string, unknown>): void;
-}
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const AnalyticsContext = createContext<ContextProperties>({});
+import { AnalyticsContext } from "#/components/Analytics/Analytics/AnalyticsContext";
 
 interface Properties extends PropsWithChildren {
   gaId?: string;

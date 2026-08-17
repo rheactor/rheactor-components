@@ -1,0 +1,1 @@
+function e(e,t){let n=new URL(globalThis.location.href);return n.searchParams.set(e,t),n.href}function t(e){let t=new URLSearchParams;for(let[n,r]of Object.entries(e))r!==void 0&&t.set(n,r);return`?${t.toString()}`}function n(){return globalThis.location.origin+globalThis.location.pathname}export{t as n,n as r,e as t};

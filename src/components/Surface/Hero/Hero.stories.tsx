@@ -8,19 +8,18 @@ export default {
   component: Hero,
 } satisfies Meta<typeof Hero>;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const Example: StoryObj<typeof Hero> = {
   args: {
     backgroundContent: (
       <Media
-        className="size-full absolute object-cover"
+        className="absolute size-full object-cover"
         src="/assets/video-example-1.webm"
         background
       />
     ),
     children: (
       <Container
-        className="min-h-64 flex items-center justify-center bg-black/25 p-16 text-center text-2xl font-bold text-white backdrop-blur-md"
+        className="flex min-h-64 items-center justify-center bg-black/25 p-16 text-center text-2xl font-bold text-white backdrop-blur-md"
         fluid
       >
         Example

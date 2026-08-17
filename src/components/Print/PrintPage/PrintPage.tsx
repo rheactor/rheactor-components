@@ -1,8 +1,7 @@
 import { twMerge } from "@rheactor/rheactor-core";
 import { isValidElement, useId, useMemo } from "react";
-import { stringifyCSSProperties } from "react-style-stringify";
-
 import type { CSSProperties, ReactNode } from "react";
+import { stringifyCSSProperties } from "react-style-stringify";
 
 interface Properties {
   /**
@@ -28,21 +27,18 @@ interface Properties {
    */
   margin?: Margin;
 
-  /**
-   * Defines the header of the page.
-   */
+  /** Defines the header of the page. */
   header?: ReactNode;
 
-  /**
-   * Defines the footer of the page.
-   */
+  /** Defines the footer of the page. */
   footer?: ReactNode;
 
   /**
    * Controls the overflow behavior of the page content.
    *
    * - "allowed": Content is allowed to overflow without any warning or visual indicator.
-   * - "warning": Displays a visual warning when content overflows the vertical size limit, highlighting the overflowing area.
+   * - "warning": Displays a visual warning when content overflows the vertical size limit,
+   *   highlighting the overflowing area.
    *
    * The default is `warning`.
    */
@@ -55,14 +51,10 @@ interface Properties {
    */
   shorten?: boolean;
 
-  /**
-   * The content of the page.
-   */
+  /** The content of the page. */
   children: ReactNode;
 
-  /**
-   * The class name of the page.
-   */
+  /** The class name of the page. */
   className?: string;
 }
 
@@ -88,7 +80,8 @@ function isSize(value: unknown): value is Size {
 }
 
 /**
- * This component renders a page with customizable size, orientation, margin, and optional header/footer.
+ * This component renders a page with customizable size, orientation, margin, and optional
+ * header/footer.
  *
  * It also provides an overflow warning if the content exceeds the page's size.
  */
@@ -112,7 +105,7 @@ export function PrintPage({
   const width = isLandscape ? dimensions.height : dimensions.width;
   const height = isLandscape ? dimensions.width : dimensions.height;
 
-  const style = useMemo(
+  const pageStyle = useMemo(
     () =>
       `@page ${pageId} { ${stringifyCSSProperties({
         margin: 0,
@@ -122,27 +115,31 @@ export function PrintPage({
     [pageId, height, width],
   );
 
+  const style = useMemo(
+    () =>
+      ({
+        "--page-id": pageId,
+        "--width": width,
+        "--height": height,
+        "--margin": margin,
+      }) as CSSProperties,
+    [pageId, width, height, margin],
+  );
+
   return (
     <div
       data-component="PrintPage"
       className={twMerge(
-        "w-(--width) min-h-(--height) p-(--margin) not-print:rounded-sm not-print:shadow-md not-print:shadow-gray-600/10 not-print:bg-white not-print:outline not-print:outline-gray-600/25 not-print:overflow-hidden relative not-last:*:break-after-page box-decoration-clone [page:var(--page-id)]",
+        "relative min-h-(--height) w-(--width) box-decoration-clone p-(--margin) [page:var(--page-id)] not-last:*:break-after-page not-print:overflow-hidden not-print:rounded-sm not-print:bg-white not-print:shadow-md not-print:shadow-gray-600/10 not-print:outline not-print:outline-gray-600/25",
         shorten && "min-h-auto",
         className,
       )}
-      style={
-        {
-          "--page-id": pageId,
-          "--width": width,
-          "--height": height,
-          "--margin": margin,
-        } as CSSProperties
-      }
+      style={style}
     >
-      <style>{style}</style>
+      <style>{pageStyle}</style>
 
       {overflowMode === "warning" && (
-        <div className="top-(--height) absolute inset-x-0 bottom-0 animate-pulse bg-red-200 bg-blend-overlay print:hidden" />
+        <div className="absolute inset-x-0 top-(--height) bottom-0 animate-pulse bg-red-200 bg-blend-overlay print:hidden" />
       )}
 
       {isValidElement(header) && (
@@ -154,7 +151,7 @@ export function PrintPage({
       {isValidElement(footer) && (
         <div
           className={twMerge(
-            "top-(--height) absolute inset-x-0 -translate-y-full print:fixed",
+            "absolute inset-x-0 top-(--height) -translate-y-full print:fixed",
             overflowMode === "allowed" && "top-auto bottom-0 translate-y-0",
           )}
         >

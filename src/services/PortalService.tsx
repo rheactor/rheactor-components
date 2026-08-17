@@ -1,10 +1,8 @@
 "use client";
 
 import { cloneElement } from "react";
+import type { ReactElement, RefAttributes } from "react";
 import { createRoot } from "react-dom/client";
-
-import type { ReactElement } from "react";
-import type { RefAttributes } from "react";
 
 export type Resolve<T> = (value: T) => void;
 
@@ -20,9 +18,7 @@ export async function promisePortal<T>(resolver: Resolver<T>) {
 
   document.body.append(element);
 
-  await new Promise<T>((resolve) => {
-    void elementPromise.then(resolve);
-  });
+  await elementPromise;
 
   requestIdleCallback(() => {
     elementRoot.unmount();
@@ -32,6 +28,7 @@ export async function promisePortal<T>(resolver: Resolver<T>) {
 
 export async function promiseElement(node: ReactElement) {
   return promisePortal<HTMLElement>((resolve) =>
+    // oxlint-disable-next-line react/no-clone-element
     cloneElement(node, {
       ref(element: HTMLElement | null) {
         if (element !== null) {

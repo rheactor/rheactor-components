@@ -1,9 +1,9 @@
+//#region src/components/Surface/VLibras/VLibras.d.ts
 declare global {
-    interface Window {
-        VLibras: {
-            Widget: new () => void;
-        };
-    }
+  var VLibras: {
+    Widget: new () => void;
+  };
 }
 declare function VLibrasComponent(): import("react").JSX.Element;
+//#endregion
 export { VLibrasComponent as VLibras };

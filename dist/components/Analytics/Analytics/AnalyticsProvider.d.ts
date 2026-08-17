@@ -1,10 +1,8 @@
-import type { PropsWithChildren } from "react";
-interface ContextProperties {
-    sendEvent?(this: void, name: string, parameters?: Record<string, unknown>): void;
-}
-export declare const AnalyticsContext: import("react").Context<ContextProperties>;
+import { PropsWithChildren } from "react";
+//#region src/components/Analytics/Analytics/AnalyticsProvider.d.ts
 interface Properties extends PropsWithChildren {
-    gaId?: string;
+  gaId?: string;
 }
-export declare function AnalyticsProvider({ gaId, children, }: Properties): import("react").JSX.Element;
-export {};
+declare function AnalyticsProvider({ gaId, children }: Properties): import("react").JSX.Element;
+//#endregion
+export { AnalyticsProvider };

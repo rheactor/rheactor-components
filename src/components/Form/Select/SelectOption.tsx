@@ -1,9 +1,7 @@
 import type { ComponentProps } from "react";
 
 interface Properties extends ComponentProps<"option"> {
-  /**
-   * The title of the option.
-   */
+  /** The title of the option. */
   title?: string;
 
   /**

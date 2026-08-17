@@ -2,16 +2,12 @@
 
 import { twMerge } from "@rheactor/rheactor-core";
 import { useMemo } from "react";
-
-import type { ComponentProps, CSSProperties, ReactNode } from "react";
-import type { PropsWithChildren } from "react";
+import type { ComponentProps, CSSProperties, PropsWithChildren, ReactNode } from "react";
 
 import { LabelContext } from "#/components/Form/Label/LabelProvider";
 
 interface Properties extends PropsWithChildren, Pick<ComponentProps<"label">, "ref"> {
-  /**
-   * The title of the label.
-   */
+  /** The title of the label. */
   title?: ReactNode;
 
   /**
@@ -22,34 +18,22 @@ interface Properties extends PropsWithChildren, Pick<ComponentProps<"label">, "r
    */
   primaryPlaceholder?: string | true;
 
-  /**
-   * Whether the label is required.
-   */
+  /** Whether the label is required. */
   required?: boolean;
 
-  /**
-   * The size of the label.
-   */
+  /** The size of the label. */
   size?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
-  /**
-   * The class name of the title.
-   */
+  /** The class name of the title. */
   titleClassName?: string;
 
-  /**
-   * The class name of the label.
-   */
+  /** The class name of the label. */
   className?: string;
 
-  /**
-   * The content of the label.
-   */
+  /** The content of the label. */
   children: ReactNode;
 
-  /**
-   * The class name of the children.
-   */
+  /** The class name of the children. */
   childrenClassName?: string;
 }
 
@@ -64,6 +48,8 @@ export function Label({
   children,
   childrenClassName,
 }: Properties) {
+  const style = useMemo(() => ({ "--size": size }) as CSSProperties, [size]);
+
   const value = useMemo(
     () => ({
       primaryPlaceholder:
@@ -81,8 +67,8 @@ export function Label({
       <label
         ref={ref}
         data-component="Label"
-        className={twMerge("grid gap-1 col-span-[var(--grid-cols,var(--size))]", className)}
-        style={{ "--size": size } as CSSProperties}
+        className={twMerge("col-span-(--grid-cols,var(--size)) grid gap-1", className)}
+        style={style}
       >
         <span
           className={twMerge(

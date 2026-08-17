@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
-import { Theme, variants } from "#/components/Theme/Theme/Theme";
+import { Theme } from "#/components/Theme/Theme/Theme";
+import { variants } from "#/supports/ThemeSupport";
 
 interface Properties {
   children(this: void, variant: string): ReactNode;

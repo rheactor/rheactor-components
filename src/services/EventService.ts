@@ -1,5 +1,4 @@
 import { toArray } from "@rheactor/rheactor-core";
-
 import type { Arrayable } from "@rheactor/rheactor-core";
 
 type UnloadCallback = () => void;
@@ -43,9 +42,9 @@ export function listenWindowEvent(
   callback: EventListener,
   shouldImmediate = true,
 ) {
-  return listenEvent(window, eventName, callback, shouldImmediate);
+  return listenEvent(globalThis, eventName, callback, shouldImmediate);
 }
 
 export function listenWindowScroll(callback: Callback) {
-  return listenScroll(window, callback);
+  return listenScroll(globalThis, callback);
 }

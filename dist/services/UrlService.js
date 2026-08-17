@@ -1,1 +1,0 @@
-export function appendQueryString(e,t){let n=new URL(window.location.href);return n.searchParams.set(e,t),n.href}export function generateQueryString(e){let t=new URLSearchParams;for(let[n,r]of Object.entries(e))void 0!==r&&t.set(n,r);return`?${t.toString()}`}export function getSimplifiedUrl(){return window.location.origin+window.location.pathname}

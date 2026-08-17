@@ -1,14 +1,12 @@
-/* eslint-disable react/no-unknown-property */
 "use client";
 
 import Script from "next/script";
 
 declare global {
-  interface Window {
-    VLibras: {
-      Widget: new () => void;
-    };
-  }
+  // oxlint-disable-next-line no-inner-declarations
+  var VLibras: {
+    Widget: new () => void;
+  };
 }
 
 function VLibrasComponent() {
@@ -28,7 +26,7 @@ function VLibrasComponent() {
         strategy="lazyOnload"
         onReady={() => {
           // eslint-disable-next-line no-new
-          new window.VLibras.Widget();
+          new globalThis.VLibras.Widget();
 
           window.onload?.(new Event("load"));
         }}

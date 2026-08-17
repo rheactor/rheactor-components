@@ -1,1 +1,0 @@
-export function listenMutationObserver(e,n,t,r=!0){let s=new MutationObserver(t);return r&&t([],s),e instanceof Element&&s.observe(e,n),()=>{e instanceof Element&&s.disconnect()}}export function listenResizeObserver(e,n,t,r=!0){let s=new ResizeObserver(t);return r&&t([],s),e instanceof Element&&s.observe(e,n),()=>{e instanceof Element&&s.disconnect()}}

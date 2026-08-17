@@ -1,28 +1,19 @@
 import { twMerge } from "@rheactor/rheactor-core";
-
 import type { PropsWithChildren, ReactNode } from "react";
 
 import { Section } from "#/components/Primitive/Section/Section";
 
 interface Properties extends PropsWithChildren {
-  /**
-   * The id of the hero.
-   */
+  /** The id of the hero. */
   id?: string;
 
-  /**
-   * The class name of the hero.
-   */
+  /** The class name of the hero. */
   className?: string;
 
-  /**
-   * The content of the background.
-   */
+  /** The content of the background. */
   backgroundContent: ReactNode;
 
-  /**
-   * The content of the hero.
-   */
+  /** The content of the hero. */
   children?: ReactNode;
 }
 

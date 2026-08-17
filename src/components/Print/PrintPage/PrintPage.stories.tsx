@@ -1,9 +1,7 @@
-/* eslint-disable unicorn/no-top-level-side-effects */
 import { twMerge } from "@rheactor/rheactor-core";
-import { renderToStaticMarkup } from "react-dom/server";
-
 import type { Meta, StoryObj } from "@storybook/react";
 import type { ComponentProps, ReactNode } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 
 import { PrintContainer } from "#/components/Print/PrintContainer/PrintContainer";
 import { PrintPage } from "#/components/Print/PrintPage/PrintPage";
@@ -37,7 +35,6 @@ export default {
   },
 } satisfies Meta<typeof PrintPage>;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const EmptyPage: StoryObj<typeof PrintPage> = {};
 
 const defaultTransformer = HTMLTransformer.createDefault();
@@ -72,7 +69,6 @@ defaultTransformer.setTagReplacer(
 
 defaultTransformer.setTagReplacer("mark", ({ children }) => children as Awaited<ReactNode>);
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const SinglePage: StoryObj<typeof PrintPage> = {
   args: {
     children: (
@@ -81,7 +77,7 @@ export const SinglePage: StoryObj<typeof PrintPage> = {
 
         <p>Lorem ipsum dolor sit.</p>
 
-        <code className="my-4 grid gap-y-4 whitespace-pre-line text-sm">
+        <code className="my-4 grid gap-y-4 text-sm whitespace-pre-line">
           {(() => {
             const transformed = defaultTransformer.transform(
               "TextNode\n" +
@@ -109,7 +105,6 @@ export const SinglePage: StoryObj<typeof PrintPage> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const MultiplePages: StoryObj<typeof PrintPage> = {
   render: (parameters) => (
     <>
@@ -127,7 +122,6 @@ export const MultiplePages: StoryObj<typeof PrintPage> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const ShortenPage: StoryObj<typeof PrintPage> = {
   render: (parameters) => (
     <>
@@ -142,7 +136,6 @@ export const ShortenPage: StoryObj<typeof PrintPage> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const OverflowModeWarningPage: StoryObj<typeof PrintPage> = {
   args: {
     size: "CustomSize" as ComponentProps<typeof PrintPage>["size"],
@@ -169,7 +162,7 @@ export const OverflowModeWarningPage: StoryObj<typeof PrintPage> = {
 
         <p>Under the</p>
 
-        <p className="text-balance my-2 text-xs">
+        <p className="my-2 text-xs text-balance">
           The <strong>overflowing content</strong> will be forcibly printed on the next page. The
           blinking animation is part of the component when it detects overflow.
         </p>
@@ -178,7 +171,6 @@ export const OverflowModeWarningPage: StoryObj<typeof PrintPage> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const OverflowModeAllowedPage: StoryObj<typeof PrintPage> = {
   args: {
     overflowMode: "allowed",

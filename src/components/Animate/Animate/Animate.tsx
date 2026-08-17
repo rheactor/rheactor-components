@@ -1,11 +1,10 @@
 "use client";
 
 import { twMerge } from "@rheactor/rheactor-core";
-import { useEffect, useRef } from "react";
-
-import type { Threshold } from "#/services/hooks/useInViewport";
+import { useEffect, useMemo, useRef } from "react";
 import type { CSSProperties, PropsWithChildren, ReactNode } from "react";
 
+import type { Threshold } from "#/services/hooks/useInViewport";
 import { useInViewport } from "#/services/hooks/useInViewport";
 
 interface Properties extends PropsWithChildren {
@@ -59,19 +58,13 @@ interface Properties extends PropsWithChildren {
    */
   threshold?: Threshold;
 
-  /**
-   * Container class name.
-   */
+  /** Container class name. */
   className?: string;
 
-  /**
-   * Container children.
-   */
+  /** Container children. */
   children?: ReactNode;
 
-  /**
-   * Callback fired when the animation starts.
-   */
+  /** Callback fired when the animation starts. */
   onAnimate?(this: void): void;
 }
 
@@ -98,6 +91,16 @@ export function Animate({
   onAnimate,
 }: Properties) {
   const animateReference = useRef<HTMLDivElement>(null);
+
+  const style = useMemo(
+    () =>
+      ({
+        "--animate-duration": `${duration}ms`,
+        "--animate-easing": easing,
+        "--translate-distance": distance,
+      }) as CSSProperties,
+    [duration, easing, distance],
+  );
 
   const { ref, visible, disconnect } = useInViewport(threshold, true);
 
@@ -128,13 +131,7 @@ export function Animate({
         effects[effect],
         className,
       )}
-      style={
-        {
-          "--animate-duration": `${duration}ms`,
-          "--animate-easing": easing,
-          "--translate-distance": distance,
-        } as CSSProperties
-      }
+      style={style}
     >
       {children}
     </div>

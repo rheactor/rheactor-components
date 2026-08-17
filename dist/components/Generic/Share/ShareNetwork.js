@@ -1,5 +1,0 @@
-import{faFacebookF as e,faLinkedinIn as t,faWhatsapp as r,faXTwitter as o}from"@rheactor/rheactor-font-awesome/brands";import{faShareNodes as a}from"@rheactor/rheactor-font-awesome/classic-regular";import{generateQueryString as s}from"../../../services/UrlService.js";export class ShareNetwork{constructor(e,t,r,o){this.name=e,this.icon=t,this.className=r,this.url=o}}export const networks={x:new ShareNetwork("X",o,"bg-neutral-950",({title:e,url:t})=>`https://x.com/intent/tweet${s({text:""===e?void 0:`${e}
-
-`,url:t})}`),facebook:new ShareNetwork("Facebook",e,"bg-[#1374C8]",({url:e})=>`https://www.facebook.com/sharer/sharer.php${s({u:e})}`),linkedin:new ShareNetwork("LinkedIn",t,"bg-[#3F95E0]",({url:e})=>`https://www.linkedin.com/sharing/share-offsite${s({url:e})}`),whatsapp:new ShareNetwork("WhatsApp",r,"bg-[#00C04F]",({title:e,url:t})=>`https://api.whatsapp.com/send${s({text:""===e?t:`${e}
-
-${t}`})}`),native:new ShareNetwork("Native",a,"bg-neutral-500","native")};

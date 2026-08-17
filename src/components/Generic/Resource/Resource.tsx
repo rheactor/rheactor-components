@@ -3,7 +3,6 @@
 import { twMerge } from "@rheactor/rheactor-core";
 import Link from "next/link";
 import { useContext } from "react";
-
 import type { ComponentProps } from "react";
 
 import { ResourceContext } from "#/components/Generic/Resource/ResourceProvider";
@@ -16,9 +15,7 @@ interface Properties extends Omit<ComponentProps<"div">, "id"> {
    */
   type?: string;
 
-  /**
-   * The ID of the resource.
-   */
+  /** The ID of the resource. */
   id: number;
 }
 
@@ -32,7 +29,7 @@ export function Resource({ type = "media", id, className, children, ...propertie
       {domain !== undefined && (
         <Link
           href={`https://${domain}/admin/${type}/edit/${id}`}
-          className="group-not-data-enabled/resource:opacity-0 group-not-data-enabled/resource:pointer-events-none absolute inset-0 rounded bg-red-500/25 outline-2 outline-offset-2 outline-red-500 transition hover:bg-red-500/50"
+          className="absolute inset-0 rounded bg-red-500/25 outline-2 outline-offset-2 outline-red-500 transition group-not-data-enabled/resource:pointer-events-none group-not-data-enabled/resource:opacity-0 hover:bg-red-500/50"
         />
       )}
     </div>

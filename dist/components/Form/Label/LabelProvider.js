@@ -1,1 +1,1 @@
-"use client";import{createContext as e}from"react";export const LabelContext=e({primaryPlaceholder:void 0});
+"use client";import{createContext as e}from"react";const t=e({primaryPlaceholder:void 0});export{t as LabelContext};

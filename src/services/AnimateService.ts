@@ -2,7 +2,7 @@ import { clamp } from "@rheactor/rheactor-core";
 
 import { Timer } from "#/services/classes/Timer";
 
-type EasingFunction = (t: number) => number;
+type EasingFunction = (time: number) => number;
 
 const easings = {
   linear: (input: number) => input,

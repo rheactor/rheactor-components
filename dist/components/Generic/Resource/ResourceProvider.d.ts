@@ -1,7 +1,9 @@
-import type { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
+//#region src/components/Generic/Resource/ResourceProvider.d.ts
 interface ContextProperties {
-    domain?: string;
+  domain?: string;
 }
-export declare const ResourceContext: import("react").Context<ContextProperties>;
-export declare function ResourceProvider({ children }: PropsWithChildren): import("react").JSX.Element;
-export {};
+declare const ResourceContext: import("react").Context<ContextProperties>;
+declare function ResourceProvider({ children }: PropsWithChildren): import("react").JSX.Element;
+//#endregion
+export { ResourceContext, ResourceProvider };

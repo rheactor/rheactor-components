@@ -1,22 +1,25 @@
 "use client";
 
 import { twMerge } from "@rheactor/rheactor-core";
+import type { IconType } from "@rheactor/rheactor-font-awesome";
 import { faAngleLeft } from "@rheactor/rheactor-font-awesome/classic-regular";
 import { Children, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import type { ComponentProps, PropsWithChildren, ReactNode } from "react";
 import { Autoplay, FreeMode, Keyboard } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-import type { ArrowAdvance } from "#/components/Surface/Slider/SliderArrow";
-import type { Breakpoints } from "#/services/SwiperService";
-import type { IconType } from "@rheactor/rheactor-font-awesome";
-import type { ComponentProps, PropsWithChildren, ReactNode } from "react";
 import type { SwiperClass } from "swiper/react";
 
 import { Pagination } from "#/components/Pagination/Pagination/Pagination";
+import type { ArrowAdvance } from "#/components/Surface/Slider/SliderArrow";
 import { SliderArrow } from "#/components/Surface/Slider/SliderArrow";
 import { listenWindowEvent } from "#/services/EventService";
 import { useReady } from "#/services/hooks/useReady";
+import type { Breakpoints } from "#/services/SwiperService";
 import { normalizeBreakpoints } from "#/services/SwiperService";
+
+const emptyChildren: ReactNode[] = [];
+
+const keyboardOptions = { enabled: true, onlyInViewport: true };
 
 interface Properties extends PropsWithChildren {
   /**
@@ -27,24 +30,21 @@ interface Properties extends PropsWithChildren {
   duration?: number;
 
   /**
-   * Slide advance speed in milliseconds.
-   * It multiplies to the visible items count.
+   * Slide advance speed in milliseconds. It multiplies to the visible items count.
    *
    * Defaults to `300`.
    */
   speed?: number;
 
   /**
-   * Number of items per slide.
-   * Supports breakpoints object.
+   * Number of items per slide. Supports breakpoints object.
    *
    * Defaults to `1`.
    */
   items?: Breakpoints | number;
 
   /**
-   * Gap between items, based on `rem`.
-   * Supports breakpoints object.
+   * Gap between items, based on `rem`. Supports breakpoints object.
    *
    * Defaults to `0.5`.
    */
@@ -72,16 +72,13 @@ interface Properties extends PropsWithChildren {
   stretch?: boolean;
 
   /**
-   * Center items when there is less items than needed.
-   * Works only when `fill` is `false`.
+   * Center items when there is less items than needed. Works only when `fill` is `false`.
    *
    * Defaults to `true`.
    */
   centered?: boolean;
 
-  /**
-   * Container class name.
-   */
+  /** Container class name. */
   className?: string;
 
   /**
@@ -101,9 +98,7 @@ interface Properties extends PropsWithChildren {
    */
   arrowsStepMode?: ArrowAdvance;
 
-  /**
-   * Arrows class name applied to each arrow.
-   */
+  /** Arrows class name applied to each arrow. */
   arrowsClassName?: string;
 
   /**
@@ -121,7 +116,8 @@ interface Properties extends PropsWithChildren {
   /**
    * Arrows placement fallback.
    *
-   * It occurs when `arrowsPlacement` is `external` and there is not enough space to place the arrows on window.
+   * It occurs when `arrowsPlacement` is `external` and there is not enough space to place the
+   * arrows on window.
    *
    * - `disabled` - Arrows are disabled.
    * - `internal` - Arrows are placed inside the container.
@@ -142,33 +138,26 @@ interface Properties extends PropsWithChildren {
    */
   pagination?: "after" | "overlay" | false;
 
-  /**
-   * Pagination class name.
-   */
+  /** Pagination class name. */
   paginationClassName?: string;
 
   /**
    * Pagination compressed mode.
    *
-   * When enabled, each pagination item page represents the slider items based on visible items count.
+   * When enabled, each pagination item page represents the slider items based on visible items
+   * count.
    *
    * Defaults to `true`.
    */
   paginationCompressed?: boolean;
 
-  /**
-   * Pagination visible item pages count.
-   */
+  /** Pagination visible item pages count. */
   paginationLimit?: number;
 
-  /**
-   * Container children.
-   */
+  /** Container children. */
   children?: ReactNode;
 
-  /**
-   * Callback fired when the slider navigates to a new slide.
-   */
+  /** Callback fired when the slider navigates to a new slide. */
   onNavigate?(this: void): void;
 }
 
@@ -191,7 +180,7 @@ export function Slider({
   paginationClassName,
   paginationCompressed = true,
   paginationLimit,
-  children: baseChildren = [],
+  children: baseChildren = emptyChildren,
   onNavigate,
 }: Properties) {
   const isReady = useReady();
@@ -202,6 +191,7 @@ export function Slider({
   const [index, setIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(Number.MAX_SAFE_INTEGER);
 
+  // oxlint-disable-next-line react/no-react-children
   const children = useMemo(() => Children.toArray(baseChildren).filter(Boolean), [baseChildren]);
 
   const breakpoints = useMemo(
@@ -214,6 +204,15 @@ export function Slider({
   const [hasArrowSpace, setHasArrowSpace] = useState(false);
 
   const isOverflow = useMemo(() => children.length > visibleCount, [children.length, visibleCount]);
+
+  const autoplayOptions = useMemo(
+    () => (duration === 0 ? false : { delay: duration, pauseOnMouseEnter: true }),
+    [duration],
+  );
+
+  const modules = useMemo(() => [Autoplay, Keyboard, ...(freeFlow ? [FreeMode] : [])], [freeFlow]);
+
+  const freeModeOptions = useMemo(() => ({ enabled: freeFlow, sticky: true }), [freeFlow]);
 
   const arrowPlacementFinal = useMemo(
     () =>
@@ -286,14 +285,16 @@ export function Slider({
           />
 
           <Swiper
-            onSwiper={setSwiper}
+            onSwiper={(swiperInstance) => {
+              setSwiper(swiperInstance);
+            }}
             loop={infinity && isOverflow}
-            autoplay={duration === 0 ? false : { delay: duration, pauseOnMouseEnter: true }}
+            autoplay={autoplayOptions}
             breakpoints={breakpoints}
-            modules={[Autoplay, Keyboard, ...(freeFlow ? [FreeMode] : [])]}
+            modules={modules}
             centerInsufficientSlides={centered}
-            freeMode={{ enabled: freeFlow, sticky: true }}
-            keyboard={{ enabled: true, onlyInViewport: true }}
+            freeMode={freeModeOptions}
+            keyboard={keyboardOptions}
             loopAddBlankSlides={false}
             speed={speed * visibleCount}
             onSlideChange={({ realIndex }) => {

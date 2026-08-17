@@ -6,14 +6,12 @@ export default {
   component: Container,
 } satisfies Meta<typeof Container>;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const Example: StoryObj<typeof Container> = {
   args: {
     children: "Example",
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const NoPaddingExample: StoryObj<typeof Container> = {
   args: {
     children: "Example",

@@ -1,5 +1,5 @@
 import { twMerge } from "@rheactor/rheactor-core";
-
+import { useMemo } from "react";
 import type { CSSProperties, PropsWithChildren, ReactNode } from "react";
 
 interface Properties extends PropsWithChildren {
@@ -17,27 +17,25 @@ interface Properties extends PropsWithChildren {
    */
   fluid?: boolean;
 
-  /**
-   * Container class name.
-   */
+  /** Container class name. */
   className?: string;
 
-  /**
-   * Container children.
-   */
+  /** Container children. */
   children?: ReactNode;
 }
 
 export function Container({ paddingX = 4, fluid = false, className, children }: Properties) {
+  const style = useMemo(() => ({ "--padding-x": paddingX }) as CSSProperties, [paddingX]);
+
   return (
     <div
       data-component="Container"
       className={twMerge(
         "w-full px-[--spacing(var(--padding-x))]",
-        !fluid && "mx-auto max-w-container",
+        !fluid && "max-w-container mx-auto",
         className,
       )}
-      style={{ "--padding-x": paddingX } as CSSProperties}
+      style={style}
     >
       {children}
     </div>

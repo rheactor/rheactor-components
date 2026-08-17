@@ -1,6 +1,5 @@
-import Image from "next/image";
-
 import type { Meta, StoryObj } from "@storybook/react";
+import Image from "next/image";
 
 import { Header } from "#/components/Header/Header/Header";
 import { HeaderContainer } from "#/components/Header/HeaderContainer/HeaderContainer";
@@ -25,12 +24,13 @@ function HeaderContainerFixture() {
 
       <HeaderNav
         // eslint-disable-next-line react/no-unstable-nested-components
-        openedModalContent={(closeHandler) => (
-          <div className="bg-theme-950/75 starting:opacity-0 fixed inset-0 z-10 flex flex-col items-center justify-center gap-y-4 text-white backdrop-blur-md transition">
-            <div onClick={closeHandler} className="cursor-pointer hover:underline">
+        openedModalContent={(handleClose) => (
+          <div className="bg-theme-950/75 fixed inset-0 z-10 flex flex-col items-center justify-center gap-y-4 text-white backdrop-blur-md transition starting:opacity-0">
+            <div onClick={handleClose} className="cursor-pointer hover:underline">
               Close (onClick)
             </div>
 
+            {/* oxlint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a className="cursor-pointer hover:underline">Close (A)</a>
           </div>
         )}
@@ -68,7 +68,6 @@ function defaultRender(parameters: Parameters<NonNullable<StoryObj<typeof Header
   );
 }
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const RelativeExample: StoryObj<typeof Header> = {
   render: defaultRender,
   args: {
@@ -78,7 +77,6 @@ export const RelativeExample: StoryObj<typeof Header> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const StaticExample: StoryObj<typeof Header> = {
   render: defaultRender,
   args: {
@@ -89,7 +87,6 @@ export const StaticExample: StoryObj<typeof Header> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const AbsoluteExample: StoryObj<typeof Header> = {
   render: defaultRender,
   args: {
@@ -100,7 +97,6 @@ export const AbsoluteExample: StoryObj<typeof Header> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const StickyExample: StoryObj<typeof Header> = {
   render: defaultRender,
   args: {
@@ -111,7 +107,6 @@ export const StickyExample: StoryObj<typeof Header> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const FixedExample: StoryObj<typeof Header> = {
   render: defaultRender,
   args: {
@@ -122,7 +117,6 @@ export const FixedExample: StoryObj<typeof Header> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const SimplifiedExample: StoryObj<typeof Header> = {
   render(parameters) {
     return (

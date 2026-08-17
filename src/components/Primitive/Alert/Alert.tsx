@@ -1,4 +1,5 @@
 import { twMerge } from "@rheactor/rheactor-core";
+import type { IconType } from "@rheactor/rheactor-font-awesome";
 import {
   faBomb,
   faBug,
@@ -8,19 +9,13 @@ import {
   faCircleXmark,
 } from "@rheactor/rheactor-font-awesome/classic-regular";
 import { Icon } from "@rheactor/rheactor-font-awesome/react";
-
-import type { IconType } from "@rheactor/rheactor-font-awesome";
 import type { PropsWithChildren } from "react";
 
 interface Properties extends PropsWithChildren {
-  /**
-   * Title of the alert.
-   */
+  /** Title of the alert. */
   title: string;
 
-  /**
-   * Variant of the alert.
-   */
+  /** Variant of the alert. */
   variant: "advice" | "critical" | "debug" | "error" | "info" | "success" | "warning";
 }
 
@@ -95,10 +90,10 @@ export function Alert({ title, variant, children }: Properties) {
   const { icon, bodyClassName, titleClassName } = variants.get(variant)!;
 
   return (
-    <div data-component="Alert" className="starting:opacity-0 transition">
+    <div data-component="Alert" className="transition starting:opacity-0">
       <div
         className={twMerge(
-          "w-fit rounded text-sm flex gap-x-2 items-center justify-center px-3 h-7 -mb-3.5 relative",
+          "relative -mb-3.5 flex h-7 w-fit items-center justify-center gap-x-2 rounded px-3 text-sm",
           titleClassName,
         )}
       >

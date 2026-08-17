@@ -1,5 +1,4 @@
 import { range } from "@rheactor/rheactor-core";
-
 import type { Meta, StoryObj } from "@storybook/react";
 import type { ComponentProps } from "react";
 
@@ -47,7 +46,6 @@ function PseudoComponent() {
   return <div>Example</div>;
 }
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const Example: StoryObj<typeof Animate> = {
   render: exampleRender,
   args: {
@@ -57,7 +55,6 @@ export const Example: StoryObj<typeof Animate> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const DistancePixels: StoryObj<typeof Animate> = {
   render: exampleRender,
   args: {
@@ -68,7 +65,6 @@ export const DistancePixels: StoryObj<typeof Animate> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const SubComponentExample: StoryObj<typeof Animate> = {
   args: {
     effect: "slideDown",
@@ -76,8 +72,7 @@ export const SubComponentExample: StoryObj<typeof Animate> = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const Issue1RelativeIssue: StoryObj<typeof Animate> = {
+export const IssueOneRelativeIssue: StoryObj<typeof Animate> = {
   render(properties) {
     return (
       <div className="grid gap-y-16">

@@ -1,7 +1,7 @@
 import "#storybook/preview.css";
-
 import type { Preview } from "@storybook/react";
 
+// oxlint-disable-next-line react/only-export-components
 export default {
   tags: ["autodocs"],
   parameters: {

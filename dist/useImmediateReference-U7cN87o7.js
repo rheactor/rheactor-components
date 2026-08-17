@@ -1,0 +1,1 @@
+import{useEffect as e,useRef as t}from"react";function n(n){let r=t(n);return e(()=>{r.current=n},[n]),r}export{n as t};

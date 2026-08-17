@@ -4,9 +4,7 @@ import { Icon } from "@rheactor/rheactor-font-awesome/react";
 import Link from "next/link";
 
 interface Properties {
-  /**
-   * The content class name.
-   */
+  /** The content class name. */
   contentClassName?: string;
 
   /**
@@ -16,34 +14,22 @@ interface Properties {
    */
   title?: string;
 
-  /**
-   * The title class name.
-   */
+  /** The title class name. */
   titleClassName?: string;
 
-  /**
-   * The phone number.
-   */
+  /** The phone number. */
   phone: string;
 
-  /**
-   * The phone number omit prefix.
-   */
+  /** The phone number omit prefix. */
   phonePrefix?: string;
 
-  /**
-   * The phone number class name.
-   */
+  /** The phone number class name. */
   phoneClassName?: string;
 
-  /**
-   * The icon class name.
-   */
+  /** The icon class name. */
   iconClassName?: string;
 
-  /**
-   * The button class name.
-   */
+  /** The button class name. */
   className?: string;
 }
 
@@ -57,14 +43,14 @@ export function WhatsappButton({
   iconClassName,
   className,
 }: Properties) {
-  const phoneNormalized = (phonePrefix + phone).replaceAll(/\D/g, "");
+  const phoneNormalized = (phonePrefix + phone).replaceAll(/\D/gv, "");
 
   return (
     <Link
       href={`https://wa.me/${phoneNormalized}`}
       target="_blank"
       rel="noreferrer"
-      className={twMerge("group/whatsapp fixed bottom-18 right-0 flex", className)}
+      className={twMerge("group/whatsapp fixed right-0 bottom-18 flex", className)}
     >
       <div
         className={twMerge(
@@ -81,7 +67,7 @@ export function WhatsappButton({
 
       <div
         className={twMerge(
-          "size-18 relative flex items-center justify-center rounded-l-md bg-green-600 text-3xl text-white transition-all group-hover/whatsapp:rounded-l-none group-hover/whatsapp:bg-green-500",
+          "relative flex size-18 items-center justify-center rounded-l-md bg-green-600 text-3xl text-white transition-all group-hover/whatsapp:rounded-l-none group-hover/whatsapp:bg-green-500",
           iconClassName,
         )}
       >

@@ -1,0 +1,1 @@
+var e=class{callback;delay;interval=null;constructor(e,t,n=!0){this.callback=e,this.delay=t,this.start(n)}start(e=!1){e&&queueMicrotask(this.callback),this.stop(),this.interval=setInterval(this.callback,this.delay)}stop(){this.interval!==null&&clearInterval(this.interval)}};export{e as t};

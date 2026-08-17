@@ -6,7 +6,6 @@ export default {
   component: BackTopButton,
 } satisfies Meta<typeof BackTopButton>;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const Example: StoryObj<typeof BackTopButton> = {
   render(parameters) {
     return (

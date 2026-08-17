@@ -1,0 +1,1 @@
+"use client";import{createContext as e}from"react";const t=e({});export{t as AnalyticsContext};

@@ -3,12 +3,11 @@
 import { twMerge } from "@rheactor/rheactor-core";
 import { faShareFromSquare } from "@rheactor/rheactor-font-awesome/classic-regular";
 import { Icon } from "@rheactor/rheactor-font-awesome/react";
-import { useEffect, useState } from "react";
-
-import type { ShareNetworkName } from "#/components/Generic/Share/ShareNetwork";
+import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 
 import { Ready } from "#/components/Generic/Ready/Ready";
+import type { ShareNetworkName } from "#/components/Generic/Share/ShareNetwork";
 import { networks as allNetworks } from "#/components/Generic/Share/ShareNetwork";
 import { ShareNetworkIcon } from "#/components/Generic/Share/ShareNetworkIcon";
 import { listenWindowEvent } from "#/services/EventService";
@@ -44,19 +43,13 @@ interface Properties {
    */
   networks?: ShareNetworkName[];
 
-  /**
-   * Determines the class name of the network icon.
-   */
+  /** Determines the class name of the network icon. */
   networkClassName?: string;
 
-  /**
-   * Determines the class name of the share container.
-   */
+  /** Determines the class name of the share container. */
   className?: string;
 
-  /**
-   * Determines the callback when a network is clicked.
-   */
+  /** Determines the callback when a network is clicked. */
   onShare?(this: void, network: string, documentUrl: string, documentTitle: string): void;
 }
 
@@ -76,8 +69,12 @@ export function Share({
 
   const [selectedNetworks, setSelectedNetworks] = useState<ShareNetworkName[]>([]);
 
+  const style = useMemo(
+    () => ({ "--networks-count": selectedNetworks.length }) as CSSProperties,
+    [selectedNetworks.length],
+  );
+
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSelectedNetworks(
       networks.includes("native") && !("share" in navigator)
         ? [...networks].filter((network) => network !== "native")
@@ -115,14 +112,14 @@ export function Share({
         )}
       >
         <div className="grid grid-cols-[auto_1fr] items-center">
-          <Icon type={faShareFromSquare} className="size-5 mx-2" />
+          <Icon type={faShareFromSquare} className="mx-2 size-5" />
 
           <p>{text}</p>
         </div>
 
         <div
           className="grid grid-cols-[repeat(var(--networks-count),1fr)] gap-2 text-white"
-          style={{ "--networks-count": selectedNetworks.length } as CSSProperties}
+          style={style}
           suppressHydrationWarning
         >
           {selectedNetworks.map((network) => (

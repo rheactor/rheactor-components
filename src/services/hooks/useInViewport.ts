@@ -6,8 +6,7 @@ export type Threshold = number | `${number}px`;
 
 export function useInViewport(
   /**
-   * The threshold to consider the element visible.
-   * Can be a number (percentual) or a pixel value.
+   * The threshold to consider the element visible. Can be a number (percentual) or a pixel value.
    *
    * Defaults to `25px`.
    */

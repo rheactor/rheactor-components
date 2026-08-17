@@ -8,14 +8,12 @@ export default {
   component: Form,
 } satisfies Meta<typeof Form>;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const Example: StoryObj<typeof Form> = {
   args: {
     children: "Example",
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const FocusableExample: StoryObj<typeof Form> = {
   args: {
     className: "group",

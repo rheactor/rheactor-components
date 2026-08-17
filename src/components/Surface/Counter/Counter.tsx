@@ -2,10 +2,9 @@
 
 import { formatNumber } from "@rheactor/rheactor-core";
 import { useEffect, useMemo, useState } from "react";
-
-import type { Easing } from "#/services/AnimateService";
 import type { CSSProperties } from "react";
 
+import type { Easing } from "#/services/AnimateService";
 import { animate } from "#/services/AnimateService";
 import { useInViewport } from "#/services/hooks/useInViewport";
 
@@ -17,21 +16,13 @@ interface Properties {
    */
   from?: number;
 
-  /**
-   * Final value.
-   */
+  /** Final value. */
   to: number;
 
-  /**
-   * Thousand separator.
-   * Defaults to none.
-   */
+  /** Thousand separator. Defaults to none. */
   thousandSeparator?: string;
 
-  /**
-   * Decimal separator.
-   * Defaults to `.`
-   */
+  /** Decimal separator. Defaults to `.` */
   decimalSeparator?: string;
 
   /**
@@ -55,9 +46,7 @@ interface Properties {
    */
   easing?: Easing;
 
-  /**
-   * Class name.
-   */
+  /** Class name. */
   className?: string;
 }
 
@@ -75,6 +64,8 @@ export function Counter({
 
   const [progress, setProgress] = useState(0);
 
+  const style = useMemo(() => ({ "--progress": progress }) as CSSProperties, [progress]);
+
   const value = useMemo(
     () =>
       formatNumber(from + (to - from) * progress, decimals, decimalSeparator, thousandSeparator),
@@ -91,12 +82,7 @@ export function Counter({
   }, [disconnect, duration, easing, visible]);
 
   return (
-    <div
-      ref={ref}
-      data-component="Counter"
-      className={className}
-      style={{ "--progress": progress } as CSSProperties}
-    >
+    <div ref={ref} data-component="Counter" className={className} style={style}>
       {value}
     </div>
   );

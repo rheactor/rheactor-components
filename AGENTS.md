@@ -2,8 +2,9 @@
 
 ## Contexto do Projeto
 
-`@rentalhost/nolva-components` é um pacote privado de componentes React reutilizáveis organizados por categorias funcionais.
-Este documento fornece uma compreensão rápida da arquitetura e padrões únicos do projeto.
+`@rentalhost/nolva-components` é um pacote privado de componentes React reutilizáveis organizados
+por categorias funcionais. Este documento fornece uma compreensão rápida da arquitetura e padrões
+únicos do projeto.
 
 ## Stack Tecnológica
 
@@ -11,16 +12,20 @@ Este documento fornece uma compreensão rápida da arquitetura e padrões único
 - **TailwindCSS 4.1.18** com sistema customizado de variantes
 - **Storybook 10.2.8** para documentação de componentes
 - **Build**: TypeScript → SWC (minificação)
-- **Dependência interna**: `@rheactor/rheactor-core` (GitHub) para utilitários compartilhados como `twMerge`
+- **Dependência interna**: `@rheactor/rheactor-core` (GitHub) para utilitários compartilhados como
+  `twMerge`
 
 ## Organização de Componentes
 
 Hierarquia de 11 categorias funcionais:
 
 - **Primitive**: Componentes base sem dependências (Container, Section, Alert)
-- **Form**: Controles de formulário com contexto compartilhado (Button, Input, Select, Textarea, Label, Form)
-- **Generic**: Utilitários funcionais (BackButton, Share, InputSearch, TextClamp, Resource, Ready, WhatsappButton, BackTopButton)
-- **Surface**: Componentes UI complexos (Media, Accordion, Slider, Hero, Counter, FlipCard, ScrollProgress, VLibras)
+- **Form**: Controles de formulário com contexto compartilhado (Button, Input, Select, Textarea,
+  Label, Form)
+- **Generic**: Utilitários funcionais (BackButton, Share, InputSearch, TextClamp, Resource, Ready,
+  WhatsappButton, BackTopButton)
+- **Surface**: Componentes UI complexos (Media, Accordion, Slider, Hero, Counter, FlipCard,
+  ScrollProgress, VLibras)
 - **Animate**: Wrapper de animação baseado em IntersectionObserver
 - **Header**: Componentes de navegação (Header, HeaderNav, HeaderContainer)
 - **Pagination**: Controle de paginação
@@ -57,7 +62,8 @@ className = "theme-solid:bg-theme-500 not-data-animated:*:opacity-0";
 
 ### 2. contextWrapper Pattern
 
-Utilitário em `src/services/ContextService.tsx` que envolve automaticamente componentes com seus Context Providers, eliminando boilerplate.
+Utilitário em `src/services/ContextService.tsx` que envolve automaticamente componentes com seus
+Context Providers, eliminando boilerplate.
 
 Componentes que usam: Form, Label, Resource, Analytics
 
@@ -65,7 +71,8 @@ Componentes que usam: Form, Label, Resource, Analytics
 
 ### 3. asChild Pattern (Composição Polimórfica)
 
-Permite mesclar comportamento de um componente com elementos customizados via `cloneElement`, seguindo o padrão Radix UI.
+Permite mesclar comportamento de um componente com elementos customizados via `cloneElement`,
+seguindo o padrão Radix UI.
 
 ```tsx
 <Button asChild>
@@ -78,11 +85,13 @@ Permite mesclar comportamento de um componente com elementos customizados via `c
 ### 4. Sistema de Tema com CSS Custom Properties
 
 - Variáveis CSS `--theme-50` até `--theme-950` (escala de cores)
-- Custom variants: `@custom-variant theme-solid`, `theme-outline`, `theme-transparent`, `disabled`, `stuck`
+- Custom variants: `@custom-variant theme-solid`, `theme-outline`, `theme-transparent`, `disabled`,
+  `stuck`
 - Classes utilitárias `.theme-{color}` para todas as cores do Tailwind (red, blue, green, etc)
 - **ThemeSpread component** no Storybook renderiza componentes em todas as variantes de tema
 
-**Referência**: `src/theme.css` (linhas 6-12 para variants, 45-57 para variáveis base, 59-367 para cores)
+**Referência**: `src/theme.css` (linhas 6-12 para variants, 45-57 para variáveis base, 59-367 para
+cores)
 
 ### 5. Event Service com Cleanup Functions
 
@@ -158,7 +167,8 @@ Ao trabalhar neste projeto, estes arquivos demonstram os padrões arquiteturais 
 
 ## Exportações
 
-- **Entry point**: `src/index.ts` exporta ~30+ componentes e services
+- **Entry point**: `src/index.ts` exporta ~30+ componentes e services (livre de dependência de `next`)
+- **Next**: `src/index.next.ts` exporta apenas os componentes que dependem de `next` (exports `./Next` no package.json)
 - **Tema**: `src/theme.css` exportado separadamente via package.json exports field
 
 ## Notas Importantes

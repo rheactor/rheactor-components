@@ -1,7 +1,6 @@
 "use client";
 
 import { createContext, useMemo, useState } from "react";
-
 import type { Dispatch, PropsWithChildren, SetStateAction } from "react";
 
 interface ContextProperties {
@@ -9,7 +8,7 @@ interface ContextProperties {
   setFocused?: Dispatch<SetStateAction<boolean>>;
 }
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
+// oxlint-disable-next-line react/only-export-components
 export const FormContext = createContext<ContextProperties>({});
 
 export function FormProvider({ children }: PropsWithChildren) {

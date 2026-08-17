@@ -1,5 +1,4 @@
 import { range } from "@rheactor/rheactor-core";
-
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Counter } from "#/components/Surface/Counter/Counter";
@@ -8,7 +7,6 @@ export default {
   component: Counter,
 } satisfies Meta<typeof Counter>;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const Example: StoryObj<typeof Counter> = {
   render({ to, ...properties }) {
     return (

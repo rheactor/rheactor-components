@@ -6,14 +6,10 @@ import { useAnalytics } from "#/services/hooks/useAnalytics";
 import { useInViewport } from "#/services/hooks/useInViewport";
 
 interface Properties {
-  /**
-   * The name of the event to send.
-   */
+  /** The name of the event to send. */
   eventName: string;
 
-  /**
-   * The parameters to send with the event.
-   */
+  /** The parameters to send with the event. */
   eventParams?: Record<string, unknown>;
 }
 
@@ -29,7 +25,6 @@ export function AnalyticsViewport({ eventName, eventParams }: Properties) {
     }
 
     sendEvent?.(eventName, eventParams);
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSubmitted(true);
   }, [eventName, eventParams, sendEvent, submitted, visible]);
 
