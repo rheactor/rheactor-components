@@ -70,12 +70,21 @@ export function HeaderNav({
 
   const portalResolver = useRef<Resolve<void>>(null);
 
+  const openedReference = useImmediateReference(opened);
+
+  const closeOverlay = useCallback(() => {
+    portalResolver.current?.();
+    portalResolver.current = null;
+    setOpened(false);
+  }, []);
+
   const close = useCallback(() => {
-    setOpened((state) => {
-      if (state) {
-        portalResolver.current?.();
-        portalResolver.current = null;
-      } else {
+    const shouldOpen = !openedReference.current;
+
+    setOpened(shouldOpen);
+
+    if (shouldOpen) {
+      if (portalResolver.current === null) {
         void (async () => {
           // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
           await promisePortal<void>((resolver) => {
@@ -88,16 +97,15 @@ export function HeaderNav({
             );
           });
 
-          setOpened(false);
+          closeOverlay();
         })();
       }
-
-      return !state;
-    });
-  }, [openedModalContent]);
+    } else {
+      closeOverlay();
+    }
+  }, [closeOverlay, openedModalContent, openedReference]);
 
   const closeReference = useImmediateReference(close);
-  const openedReference = useImmediateReference(opened);
 
   useEffect(() => {
     if (!isReady) {

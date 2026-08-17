@@ -4,13 +4,13 @@ import { defineConfig } from "tsdown";
 export default defineConfig({
   minify: true,
   entry: [
-    "./src/index.ts",
-    "./src/index.next.ts",
-    "./src/index-slider.ts",
-    "./src/index-third.ts",
-    "./src/index-video.ts",
-    "./src/index-style.ts",
-    "./src/index-dom.ts",
+    "src/index.ts",
+    "src/index.next.ts",
+    "src/index-slider.ts",
+    "src/index-third.ts",
+    "src/index-video.ts",
+    "src/index-style.ts",
+    "src/index-dom.ts",
     // use client:
     "src/components/Analytics/Analytics/AnalyticsContext.ts",
     "src/components/Analytics/Analytics/AnalyticsProvider.tsx",
