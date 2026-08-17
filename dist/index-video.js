@@ -1,1 +1,1 @@
-import{t as e}from"./Media-xkz4F5l6.js";import{n as t}from"./MediaVideoYoutube-Bd4SHNTp.js";export{e as Media,t as getVideoThumbnail};
+import{t as e}from"./VideoService-Cwq8r_uS.js";export{e as getVideoThumbnail};

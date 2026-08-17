@@ -1,0 +1,1 @@
+import{createContext as e,useContext as t}from"react";const n=e({});function r(){let{sendEvent:e}=t(n);return{sendEvent:e}}export{n,r as t};

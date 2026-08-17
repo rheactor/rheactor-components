@@ -9,7 +9,7 @@ declare global {
   };
 }
 
-function VLibrasComponent() {
+export function VLibras() {
   return (
     <>
       {/* @ts-expect-error 2322 */}
@@ -34,5 +34,3 @@ function VLibrasComponent() {
     </>
   );
 }
-
-export { VLibrasComponent as VLibras };

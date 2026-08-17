@@ -1,1 +1,0 @@
-import{useAnalytics as e}from"./services/hooks/useAnalytics.js";import{AnalyticsProvider as t}from"./components/Analytics/Analytics/AnalyticsProvider.js";export{t as AnalyticsProvider,e as useAnalytics};

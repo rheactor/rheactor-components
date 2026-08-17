@@ -1,1 +1,0 @@
-"use client";import{t as e}from"../../../MediaVideoYoutube-Bd4SHNTp.js";export{e as MediaVideoYoutube};

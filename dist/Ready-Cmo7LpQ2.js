@@ -1,0 +1,1 @@
+import{t as e}from"./useReady-CXG2fW1T.js";import{useEffect as t,useState as n}from"react";function r(e,r){let[i,a]=n(r);return t(()=>{let t=localStorage.getItem(e);t!==null&&a(JSON.parse(t))},[e]),t(()=>{i==null?localStorage.removeItem(e):localStorage.setItem(e,JSON.stringify(i))},[e,i]),[i,a]}function i({children:t}){return e()&&t}export{r as n,i as t};

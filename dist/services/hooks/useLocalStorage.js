@@ -1,1 +1,0 @@
-"use client";import{useEffect as e,useState as t}from"react";function n(n,r){let[i,a]=t(r);return e(()=>{let e=localStorage.getItem(n);e!==null&&a(JSON.parse(e))},[n]),e(()=>{i==null?localStorage.removeItem(n):localStorage.setItem(n,JSON.stringify(i))},[n,i]),[i,a]}export{n as useLocalStorage};

@@ -1,0 +1,1 @@
+import e from"get-video-id";function t(e){return`https://i.ytimg.com/vi_webp/${e}/sddefault.webp`}function n(n){let r=e(n);return r.service===`youtube`?t(r.id):null}export{t as n,n as t};

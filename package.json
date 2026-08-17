@@ -3,6 +3,9 @@
   "version": "2.0.0",
   "private": true,
   "type": "module",
+  "files": [
+    "dist"
+  ],
   "imports": {
     "#/*": "./src/*",
     "#storybook/*": "./.storybook/*",
@@ -13,29 +16,41 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
-    "./Next": {
-      "types": "./dist/index.next.d.ts",
-      "default": "./dist/index.next.js"
+    "./Client": {
+      "types": "./dist/index-client.d.ts",
+      "default": "./dist/index-client.js"
     },
-    "./Slider": {
-      "types": "./dist/index-slider.d.ts",
-      "default": "./dist/index-slider.js"
+    "./Client/Next": {
+      "types": "./dist/index-client-next.d.ts",
+      "default": "./dist/index-client-next.js"
     },
-    "./Third": {
-      "types": "./dist/index-third.d.ts",
-      "default": "./dist/index-third.js"
+    "./Client/Slider": {
+      "types": "./dist/index-client-slider.d.ts",
+      "default": "./dist/index-client-slider.js"
     },
-    "./Video": {
-      "types": "./dist/index-video.d.ts",
-      "default": "./dist/index-video.js"
+    "./Client/Style": {
+      "types": "./dist/index-client-style.d.ts",
+      "default": "./dist/index-client-style.js"
     },
-    "./Style": {
-      "types": "./dist/index-style.d.ts",
-      "default": "./dist/index-style.js"
+    "./Client/Third": {
+      "types": "./dist/index-client-third.d.ts",
+      "default": "./dist/index-client-third.js"
+    },
+    "./Client/Video": {
+      "types": "./dist/index-client-video.d.ts",
+      "default": "./dist/index-client-video.js"
     },
     "./Dom": {
       "types": "./dist/index-dom.d.ts",
       "default": "./dist/index-dom.js"
+    },
+    "./Next": {
+      "types": "./dist/index-next.d.ts",
+      "default": "./dist/index-next.js"
+    },
+    "./Video": {
+      "types": "./dist/index-video.d.ts",
+      "default": "./dist/index-video.js"
     },
     "./theme.css": {
       "default": "./src/theme.css"

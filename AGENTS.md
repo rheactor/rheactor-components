@@ -167,9 +167,11 @@ Ao trabalhar neste projeto, estes arquivos demonstram os padrões arquiteturais 
 
 ## Exportações
 
-- **Entry point**: `src/index.ts` exporta ~30+ componentes e services (livre de dependência de `next`)
-- **Next**: `src/index.next.ts` exporta apenas os componentes que dependem de `next` (exports `./Next` no package.json)
+- **Entry point**: `src/index.ts` exporta componentes e services server-safe (livre de dependência de `next`)
+- **Client**: `src/index-client.ts` exporta componentes e hooks que declaram `"use client"` (exports `./Client` no package.json)
+- **Next**: `src/index-next.ts` exporta apenas os componentes server-safe que dependem de `next`; `src/index-client-next.ts` exporta os que usam `"use client"` (exports `./Next` e `./Client/Next`)
 - **Tema**: `src/theme.css` exportado separadamente via package.json exports field
+- **Convenção de bundles**: bundles mistos geram `index-*.ts` (server) e `index-client-*.ts` (client); bundles exclusivamente client geram apenas `index-client-*.ts`; bundles sem `"use client"` geram apenas `index-*.ts`
 
 ## Notas Importantes
 

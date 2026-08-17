@@ -1,0 +1,1 @@
+import{useEffect as e,useState as t}from"react";function n(){let[n,r]=t(!1);return e(()=>{r(!0)},[]),n}export{n as t};
