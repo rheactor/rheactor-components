@@ -118,6 +118,7 @@ export function Mosaic({ duration = 5000, shuffle = false, className, children }
   );
 
   useLayoutEffect(() => {
+    // oxlint-disable-next-line react/set-state-in-effect
     setColumns(readColumns());
   }, [readColumns]);
 

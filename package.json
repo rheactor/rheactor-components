@@ -2,10 +2,10 @@
   "name": "@rheactor/rheactor-components",
   "version": "2.0.0",
   "private": true,
-  "type": "module",
   "files": [
     "dist"
   ],
+  "type": "module",
   "imports": {
     "#/*": "./src/*",
     "#storybook/*": "./.storybook/*",
@@ -36,9 +36,9 @@
       "types": "./dist/index-client-third.d.ts",
       "default": "./dist/index-client-third.js"
     },
-    "./Client/Video": {
-      "types": "./dist/index-client-video.d.ts",
-      "default": "./dist/index-client-video.js"
+    "./Client/Media": {
+      "types": "./dist/index-client-media.d.ts",
+      "default": "./dist/index-client-media.js"
     },
     "./Dom": {
       "types": "./dist/index-dom.d.ts",
@@ -48,9 +48,9 @@
       "types": "./dist/index-next.d.ts",
       "default": "./dist/index-next.js"
     },
-    "./Video": {
-      "types": "./dist/index-video.d.ts",
-      "default": "./dist/index-video.js"
+    "./Media": {
+      "types": "./dist/index-media.d.ts",
+      "default": "./dist/index-media.js"
     },
     "./theme.css": {
       "default": "./src/theme.css"
@@ -74,9 +74,9 @@
   "devDependencies": {
     "@next/third-parties": "^16.3.1",
     "@rheactor/rheactor-oxc-config": "github:rheactor/rheactor-oxc-config",
-    "@storybook/addon-docs": "^10.5.8",
-    "@storybook/nextjs": "^10.5.8",
-    "@storybook/react": "^10.5.8",
+    "@storybook/addon-docs": "^10.5.10",
+    "@storybook/nextjs": "^10.5.10",
+    "@storybook/react": "^10.5.10",
     "@tailwindcss/postcss": "^4.3.3",
     "@total-typescript/ts-reset": "^0.6.1",
     "@types/node": "^26.2.0",
@@ -86,15 +86,15 @@
     "get-video-id": "^4.2.0",
     "htmlparser2": "^12.0.0",
     "next": "^16.3.1",
-    "oxfmt": "^0.63.0",
+    "oxfmt": "^0.64.0",
     "react-style-stringify": "^1.2.0",
-    "storybook": "^10.5.8",
+    "storybook": "^10.5.10",
     "style-to-js": "^2.0.2",
     "swiper": "^14.1.0",
     "tailwindcss": "^4.3.3",
     "tsdown": "^0.22.14",
     "typescript": "^7.0.2",
-    "vite": "^8.2.1"
+    "vite": "^8.2.2"
   },
   "peerDependencies": {
     "@next/third-parties": "^16.3.1",

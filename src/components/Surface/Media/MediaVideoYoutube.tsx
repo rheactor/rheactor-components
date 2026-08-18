@@ -116,7 +116,7 @@ export function MediaVideoYoutube({
             <YoutubePlay
               style={style}
               className={twMerge(
-                "shadow-theme-950/25 absolute w-16 shadow-lg transition not-hover:opacity-(--opacity) group-hover/thumbnail:scale-115",
+                "absolute w-16 transition not-hover:opacity-(--opacity) group-hover/thumbnail:scale-115",
                 playPosition === "center"
                   ? "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                   : playPosition === "top-right"
