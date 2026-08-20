@@ -25,6 +25,7 @@ export function AnalyticsViewport({ eventName, eventParams }: Properties) {
     }
 
     sendEvent?.(eventName, eventParams);
+    // oxlint-disable-next-line react/set-state-in-effect
     setSubmitted(true);
   }, [eventName, eventParams, sendEvent, submitted, visible]);
 

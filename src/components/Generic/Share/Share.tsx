@@ -75,6 +75,7 @@ export function Share({
   );
 
   useEffect(() => {
+    // oxlint-disable-next-line react/set-state-in-effect
     setSelectedNetworks(
       networks.includes("native") && !("share" in navigator)
         ? [...networks].filter((network) => network !== "native")

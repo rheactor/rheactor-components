@@ -31,6 +31,7 @@ export function BackButton({ title = "Back", fallbackRoute, className }: Propert
     if (hasFallbackRoute && history.length > 1) {
       try {
         if (new URL(document.referrer).host === location.host) {
+          // oxlint-disable-next-line react/set-state-in-effect
           setUseFallback(false);
         }
       } catch {

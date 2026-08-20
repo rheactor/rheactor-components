@@ -78,7 +78,7 @@ export function HeaderNav({
     setOpened(false);
   }, []);
 
-  const close = useCallback(() => {
+  function close() {
     const shouldOpen = !openedReference.current;
 
     setOpened(shouldOpen);
@@ -103,7 +103,7 @@ export function HeaderNav({
     } else {
       closeOverlay();
     }
-  }, [closeOverlay, openedModalContent, openedReference]);
+  }
 
   const closeReference = useImmediateReference(close);
 

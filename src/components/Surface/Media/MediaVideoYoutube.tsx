@@ -51,7 +51,7 @@ interface Properties {
 
 export function MediaVideoYoutube({
   id,
-  title = `ID ${id}`,
+  title,
   className,
   iframeClassName,
   thumbnailClassName,
@@ -85,7 +85,7 @@ export function MediaVideoYoutube({
     >
       {play ? (
         <iframe
-          title={title}
+          title={title ?? `ID ${id}`}
           src={`https://www.youtube.com/embed/${id}?autoplay=1`}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           sandbox="allow-scripts allow-same-origin allow-popups allow-presentation"

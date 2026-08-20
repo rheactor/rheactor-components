@@ -30,6 +30,7 @@ export function PaginationPage({
   const [route, setRoute] = useState<string>();
 
   useEffect(() => {
+    // oxlint-disable-next-line react/set-state-in-effect
     setRoute(queryString === undefined ? undefined : appendQueryString(queryString, String(page)));
   }, [page, queryString]);
 

@@ -18,6 +18,7 @@ export function useLocalStorage<T>(
     const stored = localStorage.getItem(key);
 
     if (stored !== null) {
+      // oxlint-disable-next-line react/set-state-in-effect
       setValue(JSON.parse(stored) as T);
     }
   }, [key]);

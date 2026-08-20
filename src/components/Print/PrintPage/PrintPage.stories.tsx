@@ -58,7 +58,7 @@ defaultTransformer.setTextReplacer((text) => {
 
 defaultTransformer.setTagReplacer(
   "dl",
-  ({ "data-skip": _, children, className, ...properties }) => (
+  ({ "data-skip": _dataSkip, children, className, ...properties }) => (
     <div className={twMerge("text-green-600", className)} {...(properties as object)}>
       <span data-ignore tabIndex={-1}>
         {children}
