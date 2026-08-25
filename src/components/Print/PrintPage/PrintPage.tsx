@@ -1,4 +1,4 @@
-import { twMerge } from "@rheactor/rheactor-core";
+import { twMerge } from "@rheactor/rheactor-core/tailwind";
 import { isValidElement, useId, useMemo } from "react";
 import type { CSSProperties, ReactNode } from "react";
 import { stringifyCSSProperties } from "react-style-stringify";

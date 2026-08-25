@@ -1,6 +1,6 @@
 "use client";
 
-import { twMerge } from "@rheactor/rheactor-core";
+import { twMerge } from "@rheactor/rheactor-core/tailwind";
 import Link from "next/link";
 import { useContext } from "react";
 import type { ComponentProps } from "react";

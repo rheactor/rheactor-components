@@ -1,6 +1,6 @@
 "use client";
 
-import { twMerge } from "@rheactor/rheactor-core";
+import { twMerge } from "@rheactor/rheactor-core/tailwind";
 import type { IconType } from "@rheactor/rheactor-font-awesome";
 import { faBars, faXmark } from "@rheactor/rheactor-font-awesome/classic-regular";
 import { Icon } from "@rheactor/rheactor-font-awesome/react";

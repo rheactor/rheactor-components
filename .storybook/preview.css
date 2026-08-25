@@ -2,6 +2,7 @@
 
 @import "tailwindcss";
 @import "../src/theme";
+@import "../src/swiper";
 
 body {
   font-family: "Noto Sans", sans-serif;

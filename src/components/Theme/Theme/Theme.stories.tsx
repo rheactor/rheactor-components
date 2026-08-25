@@ -1,4 +1,4 @@
-import { twMerge } from "@rheactor/rheactor-core";
+import { twMerge } from "@rheactor/rheactor-core/tailwind";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Theme } from "#/components/Theme/Theme/Theme";

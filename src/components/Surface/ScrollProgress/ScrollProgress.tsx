@@ -1,6 +1,7 @@
 "use client";
 
-import { clamp, twMerge } from "@rheactor/rheactor-core";
+import { clamp } from "@rheactor/rheactor-core";
+import { twMerge } from "@rheactor/rheactor-core/tailwind";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties, PropsWithChildren } from "react";
 import { createPortal } from "react-dom";

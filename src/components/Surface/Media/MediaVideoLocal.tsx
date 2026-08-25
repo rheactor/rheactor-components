@@ -1,4 +1,5 @@
-import { getExtension, twMerge } from "@rheactor/rheactor-core";
+import { getExtension } from "@rheactor/rheactor-core";
+import { twMerge } from "@rheactor/rheactor-core/tailwind";
 
 interface Properties {
   /** The source of the image. */

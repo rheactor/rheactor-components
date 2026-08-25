@@ -1,6 +1,6 @@
 "use client";
 
-import { twMerge } from "@rheactor/rheactor-core";
+import { twMerge } from "@rheactor/rheactor-core/tailwind";
 import type { IconType } from "@rheactor/rheactor-font-awesome";
 import { faAngleLeft } from "@rheactor/rheactor-font-awesome/classic-regular";
 import { Children, useCallback, useEffect, useMemo, useRef, useState } from "react";

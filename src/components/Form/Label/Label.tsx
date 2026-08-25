@@ -1,6 +1,6 @@
 "use client";
 
-import { twMerge } from "@rheactor/rheactor-core";
+import { twMerge } from "@rheactor/rheactor-core/tailwind";
 import { useMemo } from "react";
 import type { ComponentProps, CSSProperties, PropsWithChildren, ReactNode } from "react";
 

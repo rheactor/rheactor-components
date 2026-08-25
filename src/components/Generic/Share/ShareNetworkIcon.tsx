@@ -1,4 +1,4 @@
-import { twMerge } from "@rheactor/rheactor-core";
+import { twMerge } from "@rheactor/rheactor-core/tailwind";
 import { Icon } from "@rheactor/rheactor-font-awesome/react";
 import Link from "next/link";
 

@@ -1,6 +1,7 @@
 "use client";
 
-import { clamp, noop, twMerge } from "@rheactor/rheactor-core";
+import { clamp, noop } from "@rheactor/rheactor-core";
+import { twMerge } from "@rheactor/rheactor-core/tailwind";
 import { faAngleLeft, faAnglesLeft } from "@rheactor/rheactor-font-awesome/classic-regular";
 import { Icon } from "@rheactor/rheactor-font-awesome/react";
 import { useMemo } from "react";

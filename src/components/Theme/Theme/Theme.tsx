@@ -1,4 +1,4 @@
-import { twMerge } from "@rheactor/rheactor-core";
+import { twMerge } from "@rheactor/rheactor-core/tailwind";
 import type { PropsWithChildren, ReactNode } from "react";
 
 import { variants } from "#/supports/ThemeSupport";

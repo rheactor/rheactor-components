@@ -1,4 +1,4 @@
-import { twMerge } from "@rheactor/rheactor-core";
+import { twMerge } from "@rheactor/rheactor-core/tailwind";
 import type { ComponentProps } from "react";
 
 import { Container } from "#/components/Primitive/Container/Container";

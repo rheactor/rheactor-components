@@ -13,7 +13,7 @@ por categorias funcionais. Este documento fornece uma compreensão rápida da ar
 - **Storybook 10.2.8** para documentação de componentes
 - **Build**: TypeScript → SWC (minificação)
 - **Dependência interna**: `@rheactor/rheactor-core` (GitHub) para utilitários compartilhados como
-  `twMerge`
+  `twMerge` (via `@rheactor/rheactor-core/tailwind`)
 
 ## Organização de Componentes
 
@@ -143,7 +143,8 @@ bun run build-storybook  # Build estático do Storybook
 
 - **TypeScript**: Strict mode com `noImplicitReturns`, `noUnusedLocals`, `noUnusedParameters`
 - **Props**: Extend `ComponentProps<"element">` para elementos nativos
-- **Styling**: Sempre usar `twMerge` de `@rheactor/rheactor-core` (não do tailwind-merge local)
+- **Styling**: Sempre usar `twMerge` de `@rheactor/rheactor-core/tailwind` (não do tailwind-merge
+  local)
 - **className**: Prop `className` sempre merged por último para permitir overrides do consumidor
 - **Data attributes**: Prefixar componentes com `data-component` e estados com `data-*`
 
@@ -167,11 +168,16 @@ Ao trabalhar neste projeto, estes arquivos demonstram os padrões arquiteturais 
 
 ## Exportações
 
-- **Entry point**: `src/index.ts` exporta componentes e services server-safe (livre de dependência de `next`)
-- **Client**: `src/index-client.ts` exporta componentes e hooks que declaram `"use client"` (exports `./Client` no package.json)
-- **Next**: `src/index-next.ts` exporta apenas os componentes server-safe que dependem de `next`; `src/index-client-next.ts` exporta os que usam `"use client"` (exports `./Next` e `./Client/Next`)
+- **Entry point**: `src/index.ts` exporta componentes e services server-safe (livre de dependência
+  de `next`)
+- **Client**: `src/index-client.ts` exporta componentes e hooks que declaram `"use client"` (exports
+  `./Client` no package.json)
+- **Next**: `src/index-next.ts` exporta apenas os componentes server-safe que dependem de `next`;
+  `src/index-client-next.ts` exporta os que usam `"use client"` (exports `./Next` e `./Client/Next`)
 - **Tema**: `src/theme.css` exportado separadamente via package.json exports field
-- **Convenção de bundles**: bundles mistos geram `index-*.ts` (server) e `index-client-*.ts` (client); bundles exclusivamente client geram apenas `index-client-*.ts`; bundles sem `"use client"` geram apenas `index-*.ts`
+- **Convenção de bundles**: bundles mistos geram `index-*.ts` (server) e `index-client-*.ts`
+  (client); bundles exclusivamente client geram apenas `index-client-*.ts`; bundles sem
+  `"use client"` geram apenas `index-*.ts`
 
 ## Notas Importantes
 

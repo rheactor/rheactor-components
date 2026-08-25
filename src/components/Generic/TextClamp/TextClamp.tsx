@@ -1,4 +1,4 @@
-import { twMerge } from "@rheactor/rheactor-core";
+import { twMerge } from "@rheactor/rheactor-core/tailwind";
 import { useMemo } from "react";
 import type { CSSProperties, PropsWithChildren, ReactNode } from "react";
 

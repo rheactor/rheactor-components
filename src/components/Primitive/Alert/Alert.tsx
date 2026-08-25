@@ -1,4 +1,4 @@
-import { twMerge } from "@rheactor/rheactor-core";
+import { twMerge } from "@rheactor/rheactor-core/tailwind";
 import type { IconType } from "@rheactor/rheactor-font-awesome";
 import {
   faBomb,

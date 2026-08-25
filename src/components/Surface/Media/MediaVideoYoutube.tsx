@@ -1,7 +1,7 @@
 /* eslint-disable react/iframe-missing-sandbox */
 "use client";
 
-import { twMerge } from "@rheactor/rheactor-core";
+import { twMerge } from "@rheactor/rheactor-core/tailwind";
 import { useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 

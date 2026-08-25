@@ -1,4 +1,4 @@
-import { twMerge } from "@rheactor/rheactor-core";
+import { twMerge } from "@rheactor/rheactor-core/tailwind";
 import { cloneElement, isValidElement } from "react";
 import type { ComponentProps } from "react";
 import type { JSX } from "react/jsx-runtime";

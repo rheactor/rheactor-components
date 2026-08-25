@@ -1,6 +1,7 @@
 "use client";
 
-import { twMerge, shuffle as arrayShuffle } from "@rheactor/rheactor-core";
+import { shuffle as arrayShuffle } from "@rheactor/rheactor-core";
+import { twMerge } from "@rheactor/rheactor-core/tailwind";
 import {
   Children,
   Fragment,

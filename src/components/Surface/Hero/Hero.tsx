@@ -1,4 +1,4 @@
-import { twMerge } from "@rheactor/rheactor-core";
+import { twMerge } from "@rheactor/rheactor-core/tailwind";
 import type { PropsWithChildren, ReactNode } from "react";
 
 import { Section } from "#/components/Primitive/Section/Section";

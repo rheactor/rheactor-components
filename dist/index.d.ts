@@ -1,6 +1,6 @@
 import { ComponentProps, FormHTMLAttributes, PropsWithChildren, ReactNode } from "react";
-import { Arrayable } from "@rheactor/rheactor-core";
 import { JSX as JSX$1 } from "react/jsx-runtime";
+import { Arrayable } from "@rheactor/rheactor-core";
 //#region src/components/Form/Button/Button.d.ts
 interface Properties$8 extends ComponentProps<"button"> {
   /**

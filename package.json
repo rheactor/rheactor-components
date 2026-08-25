@@ -3,7 +3,9 @@
   "version": "2.0.0",
   "private": true,
   "files": [
-    "dist"
+    "dist",
+    "src/theme.css",
+    "src/swiper.css"
   ],
   "type": "module",
   "imports": {
@@ -54,6 +56,9 @@
     },
     "./theme.css": {
       "default": "./src/theme.css"
+    },
+    "./swiper.css": {
+      "default": "./src/swiper.css"
     }
   },
   "scripts": {
@@ -72,21 +77,21 @@
     "@rheactor/rheactor-font-awesome": "^7.3.1"
   },
   "devDependencies": {
-    "@next/third-parties": "^16.3.1",
+    "@next/third-parties": "^16.3.3",
     "@rheactor/rheactor-oxc-config": "github:rheactor/rheactor-oxc-config",
     "@storybook/addon-docs": "^10.5.10",
     "@storybook/nextjs": "^10.5.10",
     "@storybook/react": "^10.5.10",
     "@tailwindcss/postcss": "^4.3.3",
     "@total-typescript/ts-reset": "^0.6.1",
-    "@types/node": "^26.2.0",
+    "@types/node": "^26.3.0",
     "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.4",
+    "@types/react-dom": "^19.2.5",
     "domhandler": "^6.0.1",
     "get-video-id": "^4.2.0",
     "htmlparser2": "^12.0.0",
-    "next": "^16.3.1",
-    "oxfmt": "^0.64.0",
+    "next": "^16.3.3",
+    "oxfmt": "^0.65.0",
     "react-style-stringify": "^1.2.0",
     "storybook": "^10.5.10",
     "style-to-js": "^2.0.2",
@@ -97,11 +102,11 @@
     "vite": "^8.2.2"
   },
   "peerDependencies": {
-    "@next/third-parties": "^16.3.1",
+    "@next/third-parties": "^16.3.3",
     "domhandler": "^6.0.1",
     "get-video-id": "^4.2.0",
     "htmlparser2": "^12.0.0",
-    "next": "^16.3.1",
+    "next": "^16.3.3",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-style-stringify": "^1.2.0",

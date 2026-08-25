@@ -1,7 +1,7 @@
 "use client";
 
-import { twMerge } from "@rheactor/rheactor-core";
 import { getNextImageUrl } from "@rheactor/rheactor-core/next";
+import { twMerge } from "@rheactor/rheactor-core/tailwind";
 import type { ImgProps } from "next/dist/shared/lib/get-img-props";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
