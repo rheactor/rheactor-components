@@ -73,6 +73,5 @@ declare const sizes: {
  *
  * It also provides an overflow warning if the content exceeds the page's size.
  */
-declare function PrintPage({ size, orientation, margin, header, footer, overflowMode, shorten, children, className }: Properties): import("react").JSX.Element;
+export declare function PrintPage({ size, orientation, margin, header, footer, overflowMode, shorten, children, className }: Properties): import("react").JSX.Element;
 //#endregion
-export { PrintPage };

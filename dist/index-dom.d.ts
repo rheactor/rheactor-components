@@ -2,7 +2,7 @@ import { ComponentProps, ElementType, ReactNode } from "react";
 //#region src/services/classes/HTMLTransformer.d.ts
 type TextReplacerCallback = (text: string) => ReactNode;
 type TagReplacerCallback<T extends ElementType> = (properties: ComponentProps<T> & Record<string, unknown>) => ReactNode;
-declare class HTMLTransformer {
+export declare class HTMLTransformer {
   private readonly attributes;
   private readonly tags;
   private readonly tagsReplacements;
@@ -19,4 +19,3 @@ declare class HTMLTransformer {
   private processChildren;
 }
 //#endregion
-export { HTMLTransformer };

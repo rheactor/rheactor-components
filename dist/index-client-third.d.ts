@@ -3,11 +3,10 @@ import { PropsWithChildren } from "react";
 interface Properties extends PropsWithChildren {
   gaId?: string;
 }
-declare function AnalyticsProvider({ gaId, children }: Properties): import("react").JSX.Element;
+export declare function AnalyticsProvider({ gaId, children }: Properties): import("react").JSX.Element;
 //#endregion
 //#region src/services/hooks/useAnalytics.d.ts
-declare function useAnalytics(): {
+export declare function useAnalytics(): {
   sendEvent: ((this: void, name: string, parameters?: Record<string, unknown>) => void) | undefined;
 };
 //#endregion
-export { AnalyticsProvider, useAnalytics };

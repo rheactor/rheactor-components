@@ -35,11 +35,7 @@ export const networks = {
     "Facebook",
     faFacebookF,
     "bg-[#1374C8]",
-    ({ url }) =>
-      `https://www.facebook.com/sharer/sharer.php${generateQueryString({
-        // eslint-disable-next-line id-length
-        u: url,
-      })}`,
+    ({ url }) => `https://www.facebook.com/sharer/sharer.php${generateQueryString({ u: url })}`,
   ),
   linkedin: new ShareNetwork(
     "LinkedIn",

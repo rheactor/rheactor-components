@@ -112,6 +112,5 @@ type VideoYoutubeProperties = Omit<ComponentProps<typeof MediaVideoYoutube>, "id
   src: string;
 };
 type Properties = ImageProperties | StaticImageProperties | SVGProperties | VideoLocalProperties | VideoYoutubeProperties;
-declare function Media(properties: Properties): import("react").JSX.Element | null;
+export declare function Media(properties: Properties): import("react").JSX.Element | null;
 //#endregion
-export { Media };

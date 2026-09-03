@@ -4,7 +4,7 @@ import { ComponentProps } from "react";
 interface Properties$1 extends Omit<ComponentProps<typeof Link>, "href"> {
   href?: string | null;
 }
-declare function LinkOptional({ href, ...properties }: Properties$1): import("react").JSX.Element;
+export declare function LinkOptional({ href, ...properties }: Properties$1): import("react").JSX.Element;
 //#endregion
 //#region src/components/Generic/WhatsappButton/WhatsappButton.d.ts
 interface Properties {
@@ -29,6 +29,5 @@ interface Properties {
   /** The button class name. */
   className?: string;
 }
-declare function WhatsappButton({ contentClassName, title, titleClassName, phone, phonePrefix, phoneClassName, iconClassName, className }: Properties): import("react").JSX.Element;
+export declare function WhatsappButton({ contentClassName, title, titleClassName, phone, phonePrefix, phoneClassName, iconClassName, className }: Properties): import("react").JSX.Element;
 //#endregion
-export { LinkOptional, WhatsappButton };

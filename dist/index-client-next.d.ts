@@ -13,7 +13,7 @@ interface Properties$2 {
   /** The class name of the button. */
   className?: string;
 }
-declare function BackButton({ title, fallbackRoute, className }: Properties$2): import("react").JSX.Element;
+export declare function BackButton({ title, fallbackRoute, className }: Properties$2): import("react").JSX.Element;
 //#endregion
 //#region src/components/Generic/Resource/Resource.d.ts
 interface Properties$1 extends Omit<ComponentProps<"div">, "id"> {
@@ -26,10 +26,10 @@ interface Properties$1 extends Omit<ComponentProps<"div">, "id"> {
   /** The ID of the resource. */
   id: number;
 }
-declare function Resource({ type, id, className, children, ...properties }: Properties$1): import("react").JSX.Element;
+export declare function Resource({ type, id, className, children, ...properties }: Properties$1): import("react").JSX.Element;
 //#endregion
 //#region src/components/Generic/Resource/ResourceProvider.d.ts
-declare function ResourceProvider({ children }: PropsWithChildren): import("react").JSX.Element;
+export declare function ResourceProvider({ children }: PropsWithChildren): import("react").JSX.Element;
 //#endregion
 //#region src/components/Generic/Share/ShareNetwork.d.ts
 interface ShareNetworkUrlProperties {
@@ -85,7 +85,7 @@ interface Properties {
   /** Determines the callback when a network is clicked. */
   onShare?(this: void, network: string, documentUrl: string, documentTitle: string): void;
 }
-declare function Share({ text, title, url, networks, networkClassName, className, onShare }: Properties): import("react").JSX.Element;
+export declare function Share({ text, title, url, networks, networkClassName, className, onShare }: Properties): import("react").JSX.Element;
 //#endregion
 //#region src/components/Surface/VLibras/VLibras.d.ts
 declare global {
@@ -93,6 +93,5 @@ declare global {
     Widget: new () => void;
   };
 }
-declare function VLibras(): import("react").JSX.Element;
+export declare function VLibras(): import("react").JSX.Element;
 //#endregion
-export { BackButton, Resource, ResourceProvider, Share, VLibras };

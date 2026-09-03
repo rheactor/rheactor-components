@@ -147,6 +147,5 @@ interface Properties extends PropsWithChildren {
   /** Callback fired when the slider navigates to a new slide. */
   onNavigate?(this: void): void;
 }
-declare function Slider({ duration, speed, items, gap, infinity, freeFlow, stretch, centered, className, arrowsIcon, arrowsStepMode, arrowsClassName, arrowsPlacement, arrowsPlacementFallback, pagination, paginationClassName, paginationCompressed, paginationLimit, children: baseChildren, onNavigate }: Properties): false | import("react").JSX.Element;
+export declare function Slider({ duration, speed, items, gap, infinity, freeFlow, stretch, centered, className, arrowsIcon, arrowsStepMode, arrowsClassName, arrowsPlacement, arrowsPlacementFallback, pagination, paginationClassName, paginationCompressed, paginationLimit, children: baseChildren, onNavigate }: Properties): false | import("react").JSX.Element;
 //#endregion
-export { Slider };
